@@ -31,3 +31,7 @@ Route::get('/cv', 'showcvController@show');
 Route::get('/downloadPDF/{id}','pdfController@saveToPDF');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
