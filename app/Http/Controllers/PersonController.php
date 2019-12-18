@@ -11,16 +11,20 @@ use Image;
 use Session;
 
 
-class createController extends Controller
+class PersonController extends Controller
 {
     //
 
-    public function upload()
+    public function index()
     {
-        return view('BE.person');
+        if (Auth::guest()) {
+            //is a guest so redirect
+            return redirect('login');
+        }else
+            return view('Admin.person');
     }
 
-    public function personPost(Request $request)
+    public function create(Request $request)
 
     {
 
@@ -50,37 +54,12 @@ class createController extends Controller
             Session::put('personID', $id);
 
 
-            return redirect()->route('person.id')->with('alert-success', 'data stored');
+            return redirect()->route('person.id')->with('alert-success', 'Person data has been saved');
         }
 
 
     }
 
-    /*public function getPerson(){
-
-
-        //$person = Per::where('user_id','=',auth()->user()->id)->orderBy('id', 'DESC')->first();
-        return view('BE.experience');
-
-    }*/
-
-    public function experience(Request $request){
-
-
-        $experience = new Experience();
-
-        $experience->position = $request -> position;
-        $experience->workplace = $request -> workplace;
-        $experience->period = $request -> period;
-        $experience->responsibilities = $request -> responsibilities;
-        $experience->stack = $request -> stack;
-        $experience->person_id =  Session::get('personID');
-
-        $experience -> save();
-
-        return view('BE.experience')->with('alert-success', 'data stored');
-
-    }
 
 
 

@@ -18,13 +18,13 @@ Route::get('/', function () {
 
 
 
-/*Uploading*/
+/*Creating CV*/
 
-Route::get('/create-cv', 'createController@upload')->name('create-cv');
+Route::get('/create-cv', 'PersonController@index')->name('create-cv');
 
-Route::post('/create-cv', 'createController@personPost');
-Route::get('/create-cv/experience/', 'createController@getPerson')->name('person.id');
-Route::post('/create-cv/experience', 'createController@experience');
+Route::post('/create-cv', 'PersonController@create');
+Route::get('/create-cv/experience/', 'ExperienceController@index')->name('person.id');
+Route::post('/create-cv/experience', 'ExperienceController@create')->name('experience');
 
 /*Displaying*/
 
