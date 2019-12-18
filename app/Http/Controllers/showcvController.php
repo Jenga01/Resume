@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\DB;
 class showcvController extends Controller
 {
 
-    public  function show(){
+    public  function show($id){
 
-        $jevbogd = DB::table('person')->get();
-        $experience = DB::table('experience')->get();
+        $person = DB::table('person')->where('id', '=', $id)->get();
+        $experience = DB::table('experience')->where('person_id', '=', $id)->get();
 
-        return view('main') ->with(compact('jevbogd', 'experience'));
+        return view('main') ->with(compact('person', 'experience'));
 
     }
 

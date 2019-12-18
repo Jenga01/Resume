@@ -20,14 +20,15 @@ Route::get('/', function () {
 
 /*Uploading*/
 
-Route::get('/upload', 'uploadController@upload')->name('upload');
-Route::post('/upload', 'UploadController@personUploadPost');
-Route::get('/upload/experience', 'uploadController@getPerson');
-Route::post('/upload/experience', 'uploadController@experience');
+Route::get('/create-cv', 'createController@upload')->name('create-cv');
+
+Route::post('/create-cv', 'createController@personPost');
+Route::get('/create-cv/experience/', 'createController@getPerson')->name('person.id');
+Route::post('/create-cv/experience', 'createController@experience');
 
 /*Displaying*/
 
-Route::get('/cv', 'showcvController@show');
+Route::get('/cv/{id}', 'showcvController@show');
 Route::get('/downloadPDF/{id}','pdfController@saveToPDF');
 
 

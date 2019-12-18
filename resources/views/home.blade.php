@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    You are logged in!
+
+
+                        <div class="container">
+
+                            <a href="{{url('/create-cv')}}" class="btn btn-outline-success">Create your CV</a>
+
+                        </div>
+
+
                 </div>
             </div>
         </div>

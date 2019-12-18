@@ -6,7 +6,9 @@ use App\Experience;
 use App\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Image;
+use Session;
 
 
 class createController extends Controller
@@ -15,10 +17,10 @@ class createController extends Controller
 
     public function upload()
     {
-        return view('BE.upload');
+        return view('BE.person');
     }
 
-    public function personUploadPost(Request $request)
+    public function personPost(Request $request)
 
     {
 
@@ -26,10 +28,7 @@ class createController extends Controller
             'name' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ));
-
-
-            $person = new Person();
-
+        $person = new Person();
         $person-> name    = $request->name;
         $person->email        = $request->email;
         $person->phone        = $request->phone;
@@ -39,7 +38,6 @@ class createController extends Controller
 
         if($request->hasFile('image')){
             $image = $request->file('image');
-
             $filename  = time() . '.' . $image->getClientOriginalExtension();
             $path = public_path('/uploads/' . $filename);
             Image::make($image->getRealPath())->resize(300, 300)->save($path);
@@ -47,24 +45,27 @@ class createController extends Controller
             $person->save();
         };
 
-        $person->save();
+        if($person->save()){
+            $id = $person->id;
+            Session::put('personID', $id);
 
 
-        return redirect('/upload')->with('alert-success', 'data stored');
-
+            return redirect()->route('person.id')->with('alert-success', 'data stored');
+        }
 
 
     }
 
-    public function getPerson(){
+    /*public function getPerson(){
 
-        $jevbogd = DB::table('person')->get();
 
-        return view('experience') ->with(compact('jevbogd'));
+        //$person = Per::where('user_id','=',auth()->user()->id)->orderBy('id', 'DESC')->first();
+        return view('BE.experience');
 
-    }
+    }*/
 
     public function experience(Request $request){
+
 
         $experience = new Experience();
 
@@ -73,12 +74,14 @@ class createController extends Controller
         $experience->period = $request -> period;
         $experience->responsibilities = $request -> responsibilities;
         $experience->stack = $request -> stack;
-        $experience->person_id = $request -> personid;
+        $experience->person_id =  Session::get('personID');
 
         $experience -> save();
 
-        return redirect('/upload/experience')->with('alert-success', 'data stored');
+        return view('BE.experience')->with('alert-success', 'data stored');
 
     }
+
+
 
 }
