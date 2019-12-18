@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Image;
 
 
-class uploadController extends Controller
+class createController extends Controller
 {
     //
 

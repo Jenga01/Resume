@@ -75,10 +75,9 @@
                 <div class="form-group">
 
                     <label for="person">Person</label>
-                    @foreach($jevbogd as $jb)
                     <select name="personid">
-                        <option value="{{$jb ->id}}">{{$jb->name}}</option>
-                        @endforeach
+                        <option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
+
                     </select>
 
                     <label for="position">Position</label>
