@@ -60,13 +60,11 @@ class PersonController extends Controller
            $id = $person->id;
             Session::put('personID', $id);
 
-
             return redirect()->route('person.id')->with('alert-success', 'Person data has been saved');
         }
 
 
     }
-
 
 
 

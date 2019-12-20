@@ -32,7 +32,6 @@ class ExperienceController extends Controller
 
         ));
 
-
         $experience = new Experience();
 
         $experience->position = $request -> position;
@@ -45,7 +44,6 @@ class ExperienceController extends Controller
         $experience -> save();
 
         if($experience->save()){
-
 
             return redirect()->route('experience')->with('alert-success', 'data about the experience has been saved');
         }

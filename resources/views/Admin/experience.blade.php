@@ -52,16 +52,19 @@
                     <div class="form-group">
                         {!! Form::label('tools', 'Tools:', ['class' => 'col-lg-2 control-label']) !!}
                         <div class="col-lg-10">
-                            {!! Form::text('stack', $value = null, ['class' => 'form-control', 'placeholder' => 'Tools you have used at your workplace']) !!}
+                            {!! Form::textarea('stack', $value = null, ['class' => 'form-control', 'placeholder' => 'Tools you have used at your workplace']) !!}
                         </div>
                     </div>
-
 
 
                     <!-- Submit Button -->
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             {!! Form::submit('Submit', ['class' => 'btn btn-success'] ) !!}
+
+                            {!! link_to_route('education', $title = 'Education', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;']); !!}
+
+
                         </div>
                     </div>
 

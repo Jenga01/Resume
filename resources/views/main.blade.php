@@ -1,3 +1,5 @@
+@foreach($person as $p)
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>Jevgenij Bogdasic</title>
+    <title>{{ $p->name }}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -124,7 +126,7 @@
             Web developer and IT enthusiast
         </div>
 
-        @foreach($person as $p)
+
 
 
             <div class="container">

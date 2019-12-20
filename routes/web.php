@@ -11,7 +11,7 @@
 |
 */
 
-use Vinkla\Hashids\Facades\Hashids;
+
 
 Route::get('/', function () {
     return view('main');
@@ -36,7 +36,6 @@ Route::get('/cv/{id}', 'showcvController@show');
 
 
 Route::model('person', 'App\Person');
-
 Route::get('downloadPDF/{person}', 'pdfController@saveToPDF')->name('person.pdf');
 
 
