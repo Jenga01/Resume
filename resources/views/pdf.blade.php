@@ -90,6 +90,9 @@
     </style>
 </head>
 <body>
+
+@foreach ($person as $p)
+
 <div class="flex-center position-ref full-height">
 
 
@@ -100,24 +103,27 @@
 
             <div class="name">
 
-                <h1>{{ $jb->name }}</h1>
+                <h1>{{ $p->name }}</h1>
             </div>
 
                     <div class="col-sm-8">
-                        <img src="{{ asset($jb->image) }}" />
+                        <img src="{{ asset($p->image) }}" />
                     </div>
         <div class="contact-info">
 
-                {{$jb->email . ','}}
+                {{$p->email . ','}}
 
-                {{ $jb->phone }}
+                {{ $p->phone }}
 
-                {{ $jb->birthday }}
+                {{ $p->birthday }}
 
-                {{ $jb->location }}
+                {{ $p->location }}
 
                 </div>
+
+
             </div>
+    @endforeach
             <div class="divider div-transparent"></div>
 
             <div class="page-break"></div>
@@ -126,9 +132,15 @@
 
                 @foreach ($experience as $exp)
                  <h1>{{ "Position: ".$exp->position }}</h1>
+                 <h1>{{ "Workplace: ".$exp->workplace }}</h1>
+                 <h1>{{ "Period: ".$exp->period }}</h1>
+                 <h1>{{ "Responsibilities: ".$exp->responsibilities }}</h1>
+                 <h1>{{ "Tools: ".$exp->stack }}</h1>
                 @endforeach
 
                 <hr class="mt-5 mb-5">
+
+
 
     </div>
 </div>

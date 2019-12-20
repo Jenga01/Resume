@@ -11,6 +11,8 @@
 |
 */
 
+use Vinkla\Hashids\Facades\Hashids;
+
 Route::get('/', function () {
     return view('main');
 });
@@ -29,7 +31,18 @@ Route::post('/create-cv/experience', 'ExperienceController@create')->name('exper
 /*Displaying*/
 
 Route::get('/cv/{id}', 'showcvController@show');
-Route::get('/downloadPDF/{id}','pdfController@saveToPDF');
+//Route::get('/downloadPDF/{id}','pdfController@saveToPDF');
+//Route::resource('/downloadPDF/{person}', 'pdfController@saveToPDF');
+
+/*Route::get('downloadPDF/{id}', 'pdfController@saveToPDF', function (App\Person $person) {
+
+
+
+});*/
+
+Route::model('person', 'App\Person');
+
+Route::get('downloadPDF/{person}', 'pdfController@saveToPDF')->name('person.pdf');
 
 
 

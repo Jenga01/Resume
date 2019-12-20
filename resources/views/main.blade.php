@@ -162,7 +162,8 @@
                         @endforeach
 
                         <p>
-                            <a href="{{action('pdfController@saveToPDF', $p->id)}}">Save as PDF</a>
+                            {{--<a href="{{action('pdfController@saveToPDF', $p->id)}}">Save as PDF</a>--}}
+                            <a href="{{ route('person.pdf', $p) }}"> Save as PDF </a>
                         </p>
 
                     </div>
@@ -187,6 +188,8 @@
                 </div>
 
             @endforeach
+
+
 
     </div>
 </div>

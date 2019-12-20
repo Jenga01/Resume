@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Experience;
+use App\Person;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 
 class showcvController extends Controller
@@ -11,10 +15,12 @@ class showcvController extends Controller
 
     public  function show($id){
 
-        $person = DB::table('person')->where('id', '=', $id)->get();
-        $experience = DB::table('experience')->where('person_id', '=', $id)->get();
+        $person = Person::where('id', '=', $id)->get();
+        $experience = Experience::where('person_id', '=', $id)->get();
 
-        return view('main') ->with(compact('person', 'experience'));
+
+
+        return view('main')->with(compact('person', 'experience'));
 
     }
 

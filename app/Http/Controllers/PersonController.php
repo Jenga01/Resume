@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Image;
 use Session;
 
+use Vinkla\Hashids\Facades\Hashids;
+
 
 class PersonController extends Controller
 {
@@ -50,7 +52,7 @@ class PersonController extends Controller
         };
 
         if($person->save()){
-            $id = $person->id;
+           $id = $person->id;
             Session::put('personID', $id);
 
 

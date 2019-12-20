@@ -9,6 +9,12 @@
     </div>
 @endif
 
+<style>
+    #edu{
+        float: right;
+    }
+</style>
+
 <div class="container">
 
     <div class="row">
@@ -24,11 +30,6 @@
 
         <div class="col-md-6">
 
-            {{--@foreach ($person as $git)
-                {{ $git ->id}}
-            @endforeach--}}
-
-          {{-- {{Session::get('personID')}}--}}
 
             <form action="" method="post" enctype="multipart/form-data">
 
@@ -61,7 +62,9 @@
 
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="Upload" />
+                <input type="submit" class="btn btn-outline-success" value="Save" />
+
+                <button type="button" id="edu" class="btn btn-outline-primary">Education</button>
 
             </form>
 

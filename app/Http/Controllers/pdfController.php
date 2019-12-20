@@ -4,22 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Experience;
 use App\Person;
+use FontLib\Table\Type\name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use PDF;
+use Vinkla\Hashids\Facades\Hashids;
 
 class pdfController extends Controller
 {
 
+
+
     public function saveToPDF($id){
 
 
-        $jb = Person::find($id);
-        $experience = Experience::all();
-        $pdf = PDF::loadView('pdf', compact('jb', 'experience'));
 
-        return $pdf->download('JB_CV.pdf');
+        $person = Person::find($id);
+        $fileName = Person::where('id', 'LIKE', "%$id->id%")->pluck('name')->first();
+        $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
+
+
+        $pdf = PDF::loadView('pdf', compact('person', 'experience'));
+
+        return $pdf->download($fileName .'_CV.pdf');
 
 
     }
