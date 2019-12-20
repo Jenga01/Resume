@@ -1,82 +1,87 @@
-
 @extends('layouts.app')
 
 @section('content')
-
-@if(session()->has('alert-success'))
-    <div class="alert alert-success">
-        {{ session()->get('alert-success') }}
-    </div>
-@endif
-
-<div class="card-body">
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
 
 
 <div class="container">
 
     <div class="row">
 
-    </div>
-
-    <br>
-
-    <div class="row">
-
-        <div class="col-md-3"></div>
 
         <div class="col-md-6">
 
-            <form action="/create-cv" method="post" enctype="multipart/form-data">
+            {!! Form::open(['route' => 'create.person', 'files' => true]) !!}
 
-                {{ csrf_field() }}
+            <fieldset>
 
+                <legend>Person Information</legend>
+
+                <!-- Name -->
                 <div class="form-group">
-
-                    <label for="Name">Name</label>
-
-                    <input type="text" name="name" class="form-control"  placeholder="Fullname" >
-
-                    <label for="E-mail">E-mail</label>
-
-                    <input type="text" name="email" class="form-control"  placeholder="E-mail" >
-
-                    <label for="Phone">Phone</label>
-
-                    <input type="text" name="phone" class="form-control"  placeholder="Phone number" >
-
-                    <label for="Date">Birthday</label>
-
-                    <input type="date" name="birthday" class="form-control">
-
-                    <label for="Location">Location</label>
-
-                    <input type="text" name="location" class="form-control"  placeholder="Location" >
-
-                    <label for="Linkedin">Linkedin</label>
-
-                    <input type="url" name="linkedin" class="form-control"  placeholder="Linkedin url" >
-
-
+                    {!! Form::label('name', 'Fullname:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('name', $value = null, ['class' => 'form-control', 'placeholder' => 'Yourname']) !!}
+                    </div>
                 </div>
 
-                <label for="Product Name">Your photo:</label>
+                <!-- email -->
+                <div class="form-group">
+                    {!! Form::label('email', 'Email:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'E-mail']) !!}
+                    </div>
+                </div>
+                <!-- Phone -->
+                <div class="form-group">
+                    {!! Form::label('phone', 'Phone:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('phone', $value = null, ['class' => 'form-control', 'placeholder' => 'Phone number']) !!}
+                    </div>
+                </div>
 
-                <br />
+                <!-- Birthday -->
+                <div class="form-group">
+                    {!! Form::label('birthday', 'Birthday:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::date('birthday', $value = null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                    </div>
+                </div> <!-- Location -->
+                <div class="form-group">
+                    {!! Form::label('location', 'Location:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('location', $value = null, ['class' => 'form-control', 'placeholder' => 'Your location']) !!}
+                    </div>
+                </div>
 
-                <input type="file" class="form-control" name="image" />
+                <!-- Linkedin profile -->
+                <div class="form-group">
+                    {!! Form::label('linkedin', 'Linkedin:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('linkedin', $value = null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                    </div>
+                </div>
 
-                <br /><br />
+                <div class="form-group">
+                    {!! Form::label('image', 'Photo:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::file('image', $value = null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                    </div>
+                </div>
 
-                <input type="submit" class="btn btn-outline-success" value="Save" />
 
 
 
-            </form>
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        {!! Form::submit('Submit', ['class' => 'btn btn-success'] ) !!}
+                    </div>
+                </div>
+
+            </fieldset>
+
+            {!! Form::close()  !!}
+
 
         </div>
 

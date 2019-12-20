@@ -32,7 +32,12 @@ class PersonController extends Controller
 
         $this->validate($request, array(
             'name' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'email' => 'required',
+            'phone' => 'required',
+            'birthday' => 'required',
+            'location' => 'required',
+            'linkedin' => 'required',
+            'image' => 'required','image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ));
         $person = new Person();
         $person-> name    = $request->name;

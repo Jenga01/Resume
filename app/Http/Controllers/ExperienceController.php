@@ -24,6 +24,14 @@ class ExperienceController extends Controller
 
     public function create(Request $request){
 
+        $this->validate($request, array(
+            'position' => 'required',
+            'workplace' => 'required',
+            'period' => 'required',
+            'responsibilities' => 'required',
+
+        ));
+
 
         $experience = new Experience();
 
@@ -37,8 +45,6 @@ class ExperienceController extends Controller
         $experience -> save();
 
         if($experience->save()){
-
-
 
 
             return redirect()->route('experience')->with('alert-success', 'data about the experience has been saved');

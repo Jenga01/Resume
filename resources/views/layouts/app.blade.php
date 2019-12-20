@@ -34,6 +34,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
+
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -88,7 +91,27 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <div class="validation-error">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
+                @if(session()->has('alert-success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('alert-success') }}
+                    </div>
+                @endif
+
+
+                <main class="py-4">
             @yield('content')
         </main>
     </div>

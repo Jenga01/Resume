@@ -24,21 +24,16 @@ Route::get('/', function () {
 
 Route::get('/create-cv', 'PersonController@index')->name('create-cv');
 
-Route::post('/create-cv', 'PersonController@create');
+Route::post('/create-cv', 'PersonController@create')->name('create.person');
 Route::get('/create-cv/experience/', 'ExperienceController@index')->name('person.id');
 Route::post('/create-cv/experience', 'ExperienceController@create')->name('experience');
+Route::get('/create-cv/education/', 'EducationController@index')->name('person.education.id');
+Route::post('/create-cv/education', 'EducationController@create')->name('education');
 
 /*Displaying*/
 
 Route::get('/cv/{id}', 'showcvController@show');
-//Route::get('/downloadPDF/{id}','pdfController@saveToPDF');
-//Route::resource('/downloadPDF/{person}', 'pdfController@saveToPDF');
 
-/*Route::get('downloadPDF/{id}', 'pdfController@saveToPDF', function (App\Person $person) {
-
-
-
-});*/
 
 Route::model('person', 'App\Person');
 
