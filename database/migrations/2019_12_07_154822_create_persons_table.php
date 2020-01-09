@@ -15,6 +15,7 @@ class CreatePersonsTable extends Migration
     {
         Schema::create('person', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
             $table->string('name', 50);
             $table->string('email', 100);
             $table->string('phone', 12);
@@ -22,6 +23,8 @@ class CreatePersonsTable extends Migration
             $table->string('location');
             $table->string('linkedin');
             $table->string('image');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

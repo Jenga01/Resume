@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Education extends Model
+class Courses extends Model
 {
-    public $table = 'education';
+    protected $table = 'courses';
 
     const UPDATED_AT = null;
 

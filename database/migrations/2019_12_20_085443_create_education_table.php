@@ -19,9 +19,9 @@ class CreateEducationTable extends Migration
             $table->string('institution');
             $table->string('period');
             $table->string('location');
-            $table->string('courses')->nullable();
             $table->bigInteger('person_id')->unsigned();
             $table->foreign('person_id')->references('id')->on('person');
+
         });
     }
 

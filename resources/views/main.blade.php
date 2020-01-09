@@ -123,7 +123,7 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Web developer and IT enthusiast
+          {{$p->title}}
         </div>
 
 
@@ -190,6 +190,8 @@
                 </div>
 
             @endforeach
+
+
 
 
 

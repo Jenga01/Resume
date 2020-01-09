@@ -19,7 +19,8 @@ class PersonController extends Controller
 
     public function index()
     {
-        if (Auth::guest()) {
+        if (Auth::guest())
+        {
             //is a guest so redirect
             return redirect('login');
         }else
@@ -31,6 +32,7 @@ class PersonController extends Controller
     {
 
         $this->validate($request, array(
+            'title' => 'required',
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
@@ -40,14 +42,18 @@ class PersonController extends Controller
             'image' => 'required','image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ));
         $person = new Person();
-        $person-> name    = $request->name;
-        $person->email        = $request->email;
-        $person->phone        = $request->phone;
-        $person->birthday      = $request->birthday;
-        $person->location      = $request->location;
-        $person->linkedin     = $request->linkedin;
 
-        if($request->hasFile('image')){
+        $person-> title    = $request-> title;
+        $person-> name    = $request-> name;
+        $person-> email        = $request-> email;
+        $person-> phone        = $request-> phone;
+        $person-> birthday      = $request-> birthday;
+        $person-> location      = $request-> location;
+        $person-> linkedin     = $request-> linkedin;
+        $person-> user_id = Auth::id();
+
+        if($request->hasFile('image'))
+        {
             $image = $request->file('image');
             $filename  = time() . '.' . $image->getClientOriginalExtension();
             $path = public_path('/uploads/' . $filename);
@@ -56,7 +62,8 @@ class PersonController extends Controller
             $person->save();
         };
 
-        if($person->save()){
+        if($person->save())
+        {
            $id = $person->id;
             Session::put('personID', $id);
 
@@ -65,6 +72,10 @@ class PersonController extends Controller
 
 
     }
+
+
+
+
 
 
 

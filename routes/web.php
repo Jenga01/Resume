@@ -14,21 +14,23 @@
 
 
 Route::get('/', function () {
-    return view('main');
+    return view('auth.login');
 });
 
 
 
 
-/*Creating CV*/
+/*Create*/
 
 Route::get('/create-cv', 'PersonController@index')->name('create-cv');
 
 Route::post('/create-cv', 'PersonController@create')->name('create.person');
 Route::get('/create-cv/experience/', 'ExperienceController@index')->name('person.id');
 Route::post('/create-cv/experience', 'ExperienceController@create')->name('experience');
-Route::get('/create-cv/education/', 'EducationController@index')->name('person.education.id');
+Route::get('/create-cv/education/', 'EducationController@index')->name('person.education');
 Route::post('/create-cv/education', 'EducationController@create')->name('education');
+Route::get('/create-cv/education/courses', 'CoursesController@index')->name('person.education.courses');
+Route::post('/create-cv/education/courses', 'CoursesController@create')->name('courses');
 
 /*Displaying*/
 
@@ -43,3 +45,10 @@ Route::get('downloadPDF/{person}', 'pdfController@saveToPDF')->name('person.pdf'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/*TEST*/
+
+
+//Route::get('/test/', 'PersonController@index2');
+

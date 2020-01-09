@@ -16,6 +16,15 @@
 
                 <legend>Person Information</legend>
 
+                <!-- Title -->
+                <div class="form-group">
+                    {!! Form::label('title', 'CV title:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('title', $value = null, ['class' => 'form-control', 'placeholder' => 'title']) !!}
+                    </div>
+                </div>
+
+
                 <!-- Name -->
                 <div class="form-group">
                     {!! Form::label('name', 'Fullname:', ['class' => 'col-lg-2 control-label']) !!}
@@ -75,6 +84,8 @@
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         {!! Form::submit('Submit', ['class' => 'btn btn-success'] ) !!}
+
+
                     </div>
                 </div>
 
