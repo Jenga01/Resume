@@ -18,7 +18,7 @@ class ExperienceController extends Controller
             //is a guest so redirect
             return redirect('login');
         }else
-            return view('Admin.experience');
+            return view('experience.create');
 
     }
 
@@ -51,5 +51,27 @@ class ExperienceController extends Controller
 
 
     }
+
+   /* public function update(Request $request, $id)
+    {
+      //  $jobid = Experience::findOrFail($id);
+
+        $experience = Experience::findOrFail($id);
+        $experience->position = $request -> position;
+        $experience->workplace = $request -> workplace;
+        $experience->period = $request -> period;
+        $experience->responsibilities = $request -> responsibilities;
+        $experience->stack = $request -> stack;
+
+
+
+
+        if($experience->save())
+        {
+
+            return redirect()->back()->with('alert-success', 'Work experience info updated!');
+        }
+
+    }*/
 
 }

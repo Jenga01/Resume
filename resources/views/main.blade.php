@@ -95,7 +95,7 @@
 
         .divider {
             position: relative;
-            margin-top: 90px;
+
             height: 1px;
         }
 
@@ -115,6 +115,7 @@
             width: 50%;
         }
 
+
     </style>
 </head>
 <body>
@@ -125,8 +126,6 @@
         <div class="title m-b-md">
           {{$p->title}}
         </div>
-
-
 
 
             <div class="container">
@@ -172,27 +171,87 @@
 
                 </div>
             </div>
-            <div class="divider div-transparent"></div>
-            <h1 class="display-1">Work experience</h1>
-            @foreach($experience as $exp)
-                <div class="container">
-                    <p class="col-sm-4" id="exp">
-                    <p>
-                    <h1>{{$exp->position}}</h1></p>
-                    <p>
-                    <h2>{{$exp->workplace}}</h2></p>
-                    <p>
-                    <h3>{{$exp->period}}</h3></p>
-                    <p><h4>{{$exp->responsibilities}}</h4></p>
-                    <p><h5>{{$exp->stack}}</h5></p>
-                    <hr class="mt-5 mb-5">
-
-                </div>
-
-            @endforeach
 
 
 
+
+        @if($experience->count() > 0)
+
+            <h1 class="display-1" style="display: block;">Work experience</h1>
+    @foreach($experience as $exp)
+
+
+                <div class="divider div-transparent"></div>
+
+            <div class="container">
+                <p class="col-sm-4" id="exp">
+                <p>
+                <h1>{{$exp->position}}</h1>
+                <p>
+                <h2>{{$exp->workplace}}</h2>
+                <p>
+                <h3>{{$exp->period}}</h3>
+                <p>
+                <h4>{{$exp->responsibilities}}</h4>
+                <p>
+                <h5>{{$exp->stack}}</h5>
+
+{{--                <hr class="mt-5 mb-5">--}}
+            </div>
+
+
+
+
+        @endforeach
+
+        @endif
+
+
+        @if($education->count() > 0)
+
+            <h1 class="display-1" style="display: block;">Education</h1>
+
+        @foreach($education as $edu)
+
+                <div class="divider div-transparent"></div>
+            <div class="container">
+                <p class="col-sm-4" >
+                <p>
+                    {{$edu->studies_name}}
+                </p>
+                <p>
+                    {{$edu->institution}}
+                </p>
+                <p>
+                    {{$edu->period}}
+                </p>
+                <p>
+                    {{$edu->location}}
+                </p>
+
+            </div>
+
+        @endforeach
+                @endif
+
+
+                @if($courses->count() > 0)
+
+                    <h1 class="display-1">Courses</h1>
+        @foreach($courses as $c)
+
+
+
+            <div class="container">
+                <p class="col-sm-4" >
+                <p>
+                {{$c->course_name}}
+                </p>
+
+            </div>
+
+        @endforeach
+                        @endif
 
 
     </div>

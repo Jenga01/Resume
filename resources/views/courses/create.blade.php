@@ -28,11 +28,11 @@
 
                     <!-- Submit Button -->
                     <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
+                        <div class="col-lg-10 col-lg-offset-2" style="padding-left: 0;">
                             {!! Form::submit('Submit', ['class' => 'btn btn-success'] ) !!}
 
 
-                            {{link_to('create-cv/education', $title = 'Education', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
+                            {{link_to('create-cv/skills', $title = 'Skills', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
 
 
 

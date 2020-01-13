@@ -20,18 +20,16 @@ class CoursesController extends Controller
             //is a guest so redirect
             return redirect('login');
         }else
-            return view('Admin.courses');
+            return view('courses.create');
 
     }
 
     public function create(Request $request){
 
 
-
         for ($i=0; $i < count($request['courses']); ++$i) {
 
             $courses = new Courses();
-
             $courses->course_name = $request['courses'][$i];
             $courses->institution_id = Session::get('institutionID');
             $courses->person_id = Session::get('personID');

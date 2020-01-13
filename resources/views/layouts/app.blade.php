@@ -11,16 +11,36 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/accordion.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/ohsnap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery_scripts.js') }}"></script>
 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <script>
         $(function() {
             $('input[name="period"]').daterangepicker({
@@ -34,6 +54,22 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+
+        .alert-green {
+            color: white;
+            background-color: #37BC9B;
+        }
+        .alert-red {
+            color: white;
+            background-color: #DA4453;
+        }
+
+        .fade:not(.show) {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 
 
@@ -92,6 +128,54 @@
             </div>
         </nav>
 
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="id">ID:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="fid" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="position">Position:</label>
+                                <div class="col-sm-10">
+                                    <input type="name" class="form-control" id="p">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="name">Name:</label>
+                                <div class="col-sm-10">
+                                    <input type="name" class="form-control" id="w">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="deleteContent">
+                            Are you Sure you want to delete <span class="dname"></span> ? <span
+                                class="hidden did"></span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn actionBtn" data-dismiss="modal">
+                                <span id="footer_action_button" class='glyphicon'> </span>
+                            </button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                <span class='glyphicon glyphicon-remove'></span> Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="validation-error">
 
             @if ($errors->any())
@@ -115,6 +199,8 @@
                 <main class="py-4">
             @yield('content')
         </main>
+    </div>
+
     </div>
 </body>
 </html>
