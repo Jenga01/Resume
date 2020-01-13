@@ -19,7 +19,7 @@ class EducationController extends Controller
             //is a guest so redirect
             return redirect('login');
         }else
-            return view('Admin.education');
+            return view('education.create');
 
     }
 

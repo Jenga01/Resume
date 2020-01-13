@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Courses;
+use App\Education;
 use App\Experience;
 use App\Person;
 use App\User;
@@ -17,10 +19,12 @@ class showcvController extends Controller
 
         $person = Person::where('id', '=', $id)->get();
         $experience = Experience::where('person_id', '=', $id)->get();
+        $education = Education::where('person_id', '=', $id)->get();
+        $courses = Courses::where('person_id', '=', $id)->get();
 
 
 
-        return view('main')->with(compact('person', 'experience'));
+        return view('main')->with(compact('person', 'experience', 'education', 'courses'));
 
     }
 

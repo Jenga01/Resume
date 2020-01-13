@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Education;
 use App\Experience;
 use App\Person;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class PersonController extends Controller
             //is a guest so redirect
             return redirect('login');
         }else
-            return view('Admin.person');
+            return view('person.create');
     }
 
     public function create(Request $request)
@@ -71,6 +72,45 @@ class PersonController extends Controller
         }
 
 
+    }
+
+    public function edit($id)
+    {
+        $person = Person::findOrFail($id);
+        $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
+        return view('edit', compact('person', 'experience'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+
+        $person = Person::findOrFail($id);
+
+        $person-> title    = $request-> title;
+        $person-> name    = $request-> name;
+        $person-> email        = $request-> email;
+        $person-> phone        = $request-> phone;
+        $person-> birthday      = $request-> birthday;
+        $person-> location      = $request-> location;
+        $person-> linkedin     = $request-> linkedin;
+
+        if($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('/uploads/' . $filename);
+            Image::make($image->getRealPath())->resize(300, 300)->save($path);
+            $person->image = '/uploads/'.$filename;
+            $person->save();
+        };
+
+
+        if($person->save())
+        {
+
+            return redirect()->back()->with('alert-success', 'Personal info updated!');
+        }
     }
 
 
