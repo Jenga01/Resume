@@ -38,6 +38,7 @@ class AjaxController extends Controller
         }
     }
 
+<<<<<<< HEAD
     public function editExperience(Request $request) {
         $experience = Experience::find($request->id);
 
@@ -64,6 +65,8 @@ class AjaxController extends Controller
             'status' => 'Work experience has been successfully deleted',
         ]);
     }
+=======
+>>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
 
 
 

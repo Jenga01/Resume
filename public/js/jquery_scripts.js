@@ -131,7 +131,10 @@ $(document).ready(function() {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
 $(document).on('click', '.edit-modal', function() {
     $('#footer_action_button').text(" Update");
     $('#footer_action_button').addClass('glyphicon-check');
@@ -143,6 +146,7 @@ $(document).on('click', '.edit-modal', function() {
     $('.deleteContent').hide();
     $('.form-horizontal').show();
     $('#fid').val($(this).data('id'));
+<<<<<<< HEAD
     $('#pos').val($(this).data('pos'));
     $('#work').val($(this).data('work'));
     $('#per').val($(this).data('per'));
@@ -168,3 +172,25 @@ $(document).on('click', '.delete-modal', function() {
 });
 
 $('#per').datepicker({ dateFormat: 'mm-dd-yyyy' });
+=======
+    $('#n').val($(this).data('name'));
+    $('#myModal').modal('show');
+});
+
+$(document).on('click', '.edit-modal', function() {
+    $('#footer_action_button').text(" Update");
+    $('#footer_action_button').addClass('glyphicon-check');
+    $('#footer_action_button').removeClass('glyphicon-trash');
+    $('.actionBtn').addClass('btn-success');
+    $('.actionBtn').removeClass('btn-danger');
+    $('.actionBtn').addClass('edit');
+    $('.modal-title').text('Edit');
+    $('.deleteContent').hide();
+    $('.form-horizontal').show();
+    $('#fid').val($(this).data('id'));
+    $('#p').val($(this).data('position'));
+    $('#w').val($(this).data('workplace'));
+    $('#myModal').modal('show');
+});
+
+>>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c

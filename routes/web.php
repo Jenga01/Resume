@@ -49,8 +49,11 @@ Route::put('experience/edit/{id}', 'ExperienceController@update')->name('person.
 /*AJAX*/
 
 Route::post('/experience/edit', 'AjaxController@addExperience' )->name('add.experience');
+<<<<<<< HEAD
 Route::post('/experience/delete', 'AjaxController@deleteWorkExp' )->name('delete.experience');
 Route::patch('/experience/edit/work', 'AjaxController@editExperience' )->name('edit.experience');
+=======
+>>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
 
 //Route::get('/edit', 'AjaxController@show');
 

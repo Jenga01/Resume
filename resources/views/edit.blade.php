@@ -15,7 +15,10 @@
 
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+=======
+>>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
 
 
 <div class="container">
@@ -210,6 +213,7 @@
                                     <td>{{$exp->position}}</td>
                                     <td>{{$exp->workplace}}</td>
                                     <td><button class="edit-modal btn btn-info" data-id="{{$exp->id}}"
+<<<<<<< HEAD
                                                 data-pos="{{$exp->position}}"
                                                 data-work="{{$exp->workplace}}"
                                                 data-per="{{$exp->period}}"
@@ -221,6 +225,14 @@
                                         <button class="delete-modal btn btn-danger" data-id="{{$exp->id}}"
                                                 data-pos="{{$exp->position}}"
                                                 data-work="{{$exp->workplace}}">
+=======
+                                                data-position="{{$exp->position}}"
+                                                data-workplace="{{$exp->workplace}}">
+                                            <span class="glyphicon glyphicon-edit"></span> Edit
+                                        </button>
+                                        <button class="delete-modal btn btn-danger" data-id="{{$exp->id}}"
+                                                data-name="{{$exp->workplace}}">
+>>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
                                             <span class="glyphicon glyphicon-trash"></span> Delete
                                         </button></td>
                                 </tr>
@@ -228,6 +240,7 @@
                         </table>
                     </div>
 
+<<<<<<< HEAD
                     <div class="container">
 
                         <div id="myModal" class="modal fade" role="dialog">
@@ -306,6 +319,48 @@
                     </div>
 
 
+=======
+
+
+                    <script>
+
+                        $("#add").click(function() {
+                            $.ajax({
+                                type: 'post',
+                                url: '{{ route('add.experience') }}',
+                                data: {
+                                    '_token': $('input[name=_token]').val(),
+                                    'position': $('input[name=position]').val(),
+                                    'workplace': $('input[name=workplace]').val(),
+                                    'period': $('input[name=period]').val(),
+                                    'responsibilities': $('input[name=responsibilities]').val(),
+                                    'stack': $('input[name=stack]').val(),
+                                    'invisible': $('input[name=invisible]').val(),
+                                },
+                                success: function(data) {
+                                    ohSnap(data.status, {
+                                        color: 'green'
+                                    });
+                                },
+
+                                error: function (result) {
+                                    var errors = '';
+                                    for(results in result.responseJSON){
+                                        errors += result.responseJSON[results] + '<br>';
+                                        ohSnap(errors, {
+                                            color: 'red'
+                                        });
+                                    }
+
+
+                                }
+                            });
+                            $('#name').val('');
+                        });
+
+
+                    </script>
+>>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
 
 
                     </div>
@@ -347,6 +402,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
     <script>
 
         $("#add").click(function() {
@@ -440,3 +496,8 @@
 
 @endsection
 
+=======
+
+
+@endsection
+>>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
