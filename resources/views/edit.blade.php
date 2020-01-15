@@ -15,6 +15,7 @@
 
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
 <div class="container">
@@ -209,12 +210,17 @@
                                     <td>{{$exp->position}}</td>
                                     <td>{{$exp->workplace}}</td>
                                     <td><button class="edit-modal btn btn-info" data-id="{{$exp->id}}"
-                                                data-position="{{$exp->position}}"
-                                                data-workplace="{{$exp->workplace}}">
+                                                data-pos="{{$exp->position}}"
+                                                data-work="{{$exp->workplace}}"
+                                                data-per="{{$exp->period}}"
+                                                data-resp="{{$exp->responsibilities}}"
+                                                data-tools="{{$exp->stack}}">
+
                                             <span class="glyphicon glyphicon-edit"></span> Edit
                                         </button>
                                         <button class="delete-modal btn btn-danger" data-id="{{$exp->id}}"
-                                                data-name="{{$exp->workplace}}">
+                                                data-pos="{{$exp->position}}"
+                                                data-work="{{$exp->workplace}}">
                                             <span class="glyphicon glyphicon-trash"></span> Delete
                                         </button></td>
                                 </tr>
@@ -222,46 +228,84 @@
                         </table>
                     </div>
 
+                    <div class="container">
+
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2" for="id">ID:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="fid" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2" for="position">Position:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text"  class="form-control" id="pos">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2" for="workplace">Workplace:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text"  class="form-control" id="work">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2" for="period">Period:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="period" class="form-control" id="per">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2" for="period">Responsibilities::</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text"  class="form-control" id="resp">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2" for="tools">Tools:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="tools">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="deleteContent">
+                                            Are you Sure you want to delete <span id="pos" class="pos"></span> Position at
+                                            <span
+                                                class="hidden work"></span>?
+                                            <span
+                                                class="hidden did" style="display: none"></span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn actionBtn" data-dismiss="modal">
+                                                <span id="footer_action_button" class='glyphicon'> </span>
+                                            </button>
+                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                <span class='glyphicon glyphicon-remove'></span> Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-                    <script>
-
-                        $("#add").click(function() {
-                            $.ajax({
-                                type: 'post',
-                                url: '{{ route('add.experience') }}',
-                                data: {
-                                    '_token': $('input[name=_token]').val(),
-                                    'position': $('input[name=position]').val(),
-                                    'workplace': $('input[name=workplace]').val(),
-                                    'period': $('input[name=period]').val(),
-                                    'responsibilities': $('input[name=responsibilities]').val(),
-                                    'stack': $('input[name=stack]').val(),
-                                    'invisible': $('input[name=invisible]').val(),
-                                },
-                                success: function(data) {
-                                    ohSnap(data.status, {
-                                        color: 'green'
-                                    });
-                                },
-
-                                error: function (result) {
-                                    var errors = '';
-                                    for(results in result.responseJSON){
-                                        errors += result.responseJSON[results] + '<br>';
-                                        ohSnap(errors, {
-                                            color: 'red'
-                                        });
-                                    }
+                    </div>
 
 
-                                }
-                            });
-                            $('#name').val('');
-                        });
-
-
-                    </script>
 
 
                     </div>
@@ -303,6 +347,96 @@
     </div>
 </div>
 
+    <script>
+
+        $("#add").click(function() {
+            $.ajax({
+                type: 'post',
+                url: '{{ route('add.experience') }}',
+                data: {
+                    '_token': $('input[name=_token]').val(),
+                    'position': $('input[name=position]').val(),
+                    'workplace': $('input[name=workplace]').val(),
+                    'period': $('input[name=period]').val(),
+                    'responsibilities': $('input[name=responsibilities]').val(),
+                    'stack': $('input[name=stack]').val(),
+                    'invisible': $('input[name=invisible]').val(),
+                },
+                success: function(data) {
+                    ohSnap(data.status, {
+                        color: 'green'
+                    });
+                },
+
+                error: function (result) {
+                    var errors = '';
+                    for(results in result.responseJSON){
+                        errors += result.responseJSON[results] + '<br>';
+                        ohSnap(errors, {
+                            color: 'red'
+                        });
+                    }
+
+
+                }
+            });
+            $('#name').val('');
+        });
+
+        $('.modal-footer').on('click', '.edit', function() {
+            $.ajax({
+                type: 'patch',
+                url: '{{route('edit.experience')}}',
+                data: {
+                    '_token': $('input[name=_token]').val(),
+                    'id': $("#fid").val(),
+                    'position': $('#pos').val(),
+                    'workplace': $('#work').val(),
+                    'period': $('#per').val(),
+                    'responsibilities': $('#resp').val(),
+                    'tools': $('#tools').val()
+                },
+                success: function(data) {
+                    ohSnap(data.status, {
+                        color: 'green'
+                    });
+                },
+
+                error: function (result) {
+                    var errors = '';
+                    for(results in result.responseJSON){
+                        errors += result.responseJSON[results] + '<br>';
+                        ohSnap(errors, {
+                            color: 'red'
+                        });
+                    }
+
+
+                }
+            });
+        });
+
+        $('.modal-footer').on('click', '.delete', function() {
+            $.ajax({
+                type: 'post',
+                url: '{{route('delete.experience')}}',
+                data: {
+                    '_token': $('input[name=_token]').val(),
+                    'id': $('.did').text()
+                },
+                success: function(data) {
+                    ohSnap(data.status, {
+                        color: 'green'
+                    });
+                },
+            });
+        });
+
+
+    </script>
+
+
 
 
 @endsection
+

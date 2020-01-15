@@ -17,6 +17,7 @@ class CreateEducationTable extends Migration
             $table->bigIncrements('id');
             $table->string('studies_name');
             $table->string('institution');
+            $table->string('degree');
             $table->string('period');
             $table->string('location');
             $table->bigInteger('person_id')->unsigned();
