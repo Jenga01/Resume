@@ -224,6 +224,14 @@
                 </p>
                 <p>
                     {{$edu->period}}
+                </p><p>
+                    @if($edu -> degree == 'B')
+                    {{"Bachelor's degree"}}
+                        @elseif($edu -> degree == 'M')
+                        {{"Master's degree"}}
+                        @else
+                        {{"Doctoral degree"}}
+                        @endif
                 </p>
                 <p>
                     {{$edu->location}}

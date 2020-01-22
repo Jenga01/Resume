@@ -3,8 +3,14 @@
 @section('content')
 
 
-    <div class="container">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+
+
+
+    <div class="container">
+@yield('education')
         <div class="row">
 
 
@@ -28,16 +34,22 @@
                     <div class="form-group">
                         {!! Form::label('instituition', 'Instituition:', ['class' => 'col-lg-2 control-label']) !!}
                         <div class="col-lg-10">
-                            {!! Form::text('instituition', $value = null, ['class' => 'form-control', 'placeholder' => 'Instituition']) !!}
+                            {!! Form::text('institution', $value = null, ['class' => 'form-control', 'placeholder' => 'Instituition']) !!}
                         </div>
                     </div>
                     <!-- Period -->
                     <div class="form-group">
                         {!! Form::label('period', 'Period:', ['class' => 'col-lg-2 control-label']) !!}
                         <div class="col-lg-10">
-                            {!! Form::text('period', $value = null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                            {!! Form::text('period', $value = null, ['class' => 'form-control', 'id' => 'per', 'placeholder' => '']) !!}
                         </div>
 
+
+                        <div class="form-group">
+                            {!! Form::label('period', 'Degree:', ['class' => 'col-lg-2 control-label']) !!}
+                            <div class="col-lg-10">
+                                {!! Form::select('degree', ['B' => "Bachelor's degree", 'M' => "Master's degree", 'D' => "Doctoral degree"]) !!}
+                            </div>
 
 
                     </div> <!-- Location -->
@@ -62,10 +74,21 @@
 
                         </div>
                     </div>
+                    </div>
 
                 </fieldset>
 
                 {!! Form::close()  !!}
+
+                @if(Session::has('personID'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('personID')}}
+                    </div>
+
+                    @else
+
+                    {{'No session'}}
+                @endif
 
 
             </div>

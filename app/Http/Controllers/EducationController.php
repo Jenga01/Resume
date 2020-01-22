@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Courses;
 use App\Education;
+use App\Experience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,8 +32,9 @@ class EducationController extends Controller
 
         $this->validate($request, array(
             'studies_name' => 'required',
-            'instituition' => 'required',
+            'institution' => 'required',
             'period' => 'required',
+            'degree' => 'required',
             'location' => 'required'
 
         ));
@@ -41,10 +44,10 @@ class EducationController extends Controller
             $education = new Education();
 
             $education->studies_name = $request->studies_name;
-            $education->institution = $request->instituition;
+            $education->institution = $request->institution;
             $education->period = $request->period;
+            $education->degree = $request->degree;
             $education->location = $request->location;
-
             $education->person_id = Session::get('personID');
 
             $education->save();
@@ -62,6 +65,32 @@ class EducationController extends Controller
 
 
     }
+
+    public function update(Request $request) {
+        $education = Education::find($request->id);
+
+
+        $education->studies_name = $request->studies_name;
+        $education->institution = $request->institution;
+        $education->period = $request->period;
+        $education->degree = $request->degree;
+        $education->location = $request->location;
+
+        $education->save();
+        return response ()->json([
+            'status' => 'Education information successfully edited',
+        ]);
+    }
+
+    public function delete(Request $request) {
+       Education::find($request->id)->delete();
+        Courses::where('institution_id', 'LIKE', "%$request->id%")->delete();
+        return response ()->json([
+            'status' => 'Education info has been successfully deleted',
+        ]);
+    }
+
+
 
 
 

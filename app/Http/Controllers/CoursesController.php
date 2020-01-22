@@ -31,6 +31,7 @@ class CoursesController extends Controller
 
             $courses = new Courses();
             $courses->course_name = $request['courses'][$i];
+
             $courses->institution_id = Session::get('institutionID');
             $courses->person_id = Session::get('personID');
 
@@ -40,9 +41,33 @@ class CoursesController extends Controller
 
         if ($courses->save()) {
 
-            return redirect()->route('courses')->with('alert-success', 'data about the education courses has been saved');
+            return back()->with('alert-success', 'data about the education courses has been saved');
         }
 
 
     }
+
+
+    public function update(Request $request) {
+        $course = Courses::find($request->id);
+
+        $course->course_name = $request ->course_name;
+
+
+        $course->save();
+        return response ()->json([
+            'status' => 'Course name successfully edited',
+        ]);
+    }
+
+
+    public function delete(Request $request) {
+        Courses::find($request->id)->delete();
+
+        return response ()->json([
+            'status' => 'Course has been successfully deleted',
+        ]);
+    }
+
+
 }

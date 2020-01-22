@@ -30,7 +30,7 @@ Route::post('/create-cv/experience', 'ExperienceController@create')->name('exper
 Route::get('/create-cv/education/', 'EducationController@index')->name('person.education');
 Route::post('/create-cv/education', 'EducationController@create')->name('education');
 Route::get('/create-cv/education/courses', 'CoursesController@index')->name('person.education.courses');
-Route::post('/create-cv/education/courses', 'CoursesController@create')->name('courses');
+Route::post('/create-cv/education/courses/', 'CoursesController@create')->name('courses');
 Route::get('/create-cv/skills', 'SkillsController@index')->name('person.skills');
 Route::post('/create-cv/skills', 'SkillsController@create')->name('skills');
 Route::get('/create-cv/languages', 'LanguagesController@index')->name('person.languages');
@@ -48,12 +48,17 @@ Route::put('experience/edit/{id}', 'ExperienceController@update')->name('person.
 
 /*AJAX*/
 
-Route::post('/experience/edit', 'AjaxController@addExperience' )->name('add.experience');
-<<<<<<< HEAD
-Route::post('/experience/delete', 'AjaxController@deleteWorkExp' )->name('delete.experience');
-Route::patch('/experience/edit/work', 'AjaxController@editExperience' )->name('edit.experience');
-=======
->>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
+//Route::get('test', ['uses'=>'UserController@index', 'as'=>'test.index']);
+
+Route::patch('experience/edit/work', 'ExperienceController@update' )->name('edit.experience');
+Route::post('experience/delete', 'ExperienceController@delete' )->name('delete.experience');
+
+Route::patch('education/edit/edu', 'EducationController@update' )->name('edit.education');
+Route::post('education/delete', 'EducationController@delete' )->name('delete.education');
+
+Route::patch('education/edit/course', 'CoursesController@update' )->name('update.course');
+Route::post('education/course/delete', 'CoursesController@delete' )->name('update.course');
+
 
 //Route::get('/edit', 'AjaxController@show');
 
@@ -71,6 +76,8 @@ Route::get('downloadPDF/{person}', 'pdfController@saveToPDF')->name('person.pdf'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 
 /*TEST*/

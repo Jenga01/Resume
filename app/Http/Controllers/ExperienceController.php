@@ -52,26 +52,31 @@ class ExperienceController extends Controller
 
     }
 
-   /* public function update(Request $request, $id)
-    {
-      //  $jobid = Experience::findOrFail($id);
+    public function update(Request $request) {
+        $experience = Experience::find($request->id);
 
-        $experience = Experience::findOrFail($id);
         $experience->position = $request -> position;
         $experience->workplace = $request -> workplace;
         $experience->period = $request -> period;
         $experience->responsibilities = $request -> responsibilities;
         $experience->stack = $request -> stack;
 
+        $experience->save();
+        return response ()->json([
+            'status' => 'Work experience successfully edited',
+        ]);
+    }
 
 
 
-        if($experience->save())
-        {
 
-            return redirect()->back()->with('alert-success', 'Work experience info updated!');
-        }
+    public function delete(Request $request) {
+        Experience::find($request->id)->delete();
 
-    }*/
+        return response ()->json([
+            'status' => 'Work experience has been successfully deleted',
+        ]);
+    }
+
 
 }

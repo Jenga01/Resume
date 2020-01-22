@@ -11,5 +11,11 @@ class Education extends Model
     const UPDATED_AT = null;
 
     const CREATED_AT = null;
+
+
+    public function courses()
+    {
+        return $this->hasMany('App\Courses', 'institution_id');
+    }
     //
 }

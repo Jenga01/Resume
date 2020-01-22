@@ -29,10 +29,14 @@
                     <!-- Submit Button -->
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2" style="padding-left: 0;">
+
                             {!! Form::submit('Submit', ['class' => 'btn btn-success'] ) !!}
 
 
+
+
                             {{link_to('create-cv/skills', $title = 'Skills', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
+
 
 
 
@@ -45,6 +49,17 @@
 
 
             </div>
+            {{Session::put('institutionID',request()->id)}}
+
+            @if(Session::has('institutionID'))
+                <div class="alert alert-success">
+                    {{ Session::get('institutionID')}}
+                </div>
+
+            @else
+
+                {{'No session'}}
+            @endif
 
         </div>
 

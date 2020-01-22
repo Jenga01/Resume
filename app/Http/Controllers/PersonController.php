@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Courses;
 use App\Education;
 use App\Experience;
 use App\Person;
@@ -77,8 +78,18 @@ class PersonController extends Controller
     public function edit($id)
     {
         $person = Person::findOrFail($id);
+        Session::put('personID', $id->id);
         $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
-        return view('edit', compact('person', 'experience'));
+        $education = Education::where('person_id', 'LIKE', "%$id->id%")->get();
+
+
+        $courses = Courses::join('education', 'education.id', '=', 'course.institution_id')
+            ->select('education.institution', 'course.course_name', 'course.institution_id', 'course.id')
+            ->where('course.person_id', '=', $id->id)
+            ->get();
+
+
+        return view('edit', compact('person', 'experience', 'education', 'courses'));
     }
 
     public function update(Request $request, $id)

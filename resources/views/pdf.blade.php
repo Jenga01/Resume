@@ -107,7 +107,8 @@
             </div>
 
                     <div class="col-sm-8">
-                        <img src="{{ asset($p->image) }}" />
+                        <img src="{{ url($p->image) }}">
+
                     </div>
         <div class="contact-info">
 

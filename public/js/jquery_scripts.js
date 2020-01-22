@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+
+
     var iCnt = 0;
     // CREATE A "DIV" ELEMENT AND DESIGN IT USING jQuery ".css()" CLASS.
     var container = $(document.createElement('div')).css({
@@ -130,12 +132,9 @@ $(document).ready(function() {
 
 
 
+/*EXPERIENCE*/
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
-$(document).on('click', '.edit-modal', function() {
+$(document).on('click', '.edit-modal-work', function() {
     $('#footer_action_button').text(" Update");
     $('#footer_action_button').addClass('glyphicon-check');
     $('#footer_action_button').removeClass('glyphicon-trash');
@@ -146,12 +145,11 @@ $(document).on('click', '.edit-modal', function() {
     $('.deleteContent').hide();
     $('.form-horizontal').show();
     $('#fid').val($(this).data('id'));
-<<<<<<< HEAD
     $('#pos').val($(this).data('pos'));
     $('#work').val($(this).data('work'));
     $('#per').val($(this).data('per'));
     $('#resp').val($(this).data('resp'));
-    $('#tools').val($(this).data('tools'));
+    $('#stack').val($(this).data('tools'));
     $('#myModal').modal('show');
 });
 
@@ -163,34 +161,80 @@ $(document).on('click', '.delete-modal', function() {
     $('.actionBtn').addClass('btn-danger');
     $('.actionBtn').addClass('delete');
     $('.modal-title').text('Delete');
-    $('.did').text($(this).data('id'));
+    $('.did-exp').text($(this).data('id'));
     $('.work').text($(this).data('work'));
     $('.deleteContent').show();
     $('.form-horizontal').hide();
     $('.pos').html($(this).data('pos'));
     $('#myModal').modal('show');
 });
+/*Education*/
 
-$('#per').datepicker({ dateFormat: 'mm-dd-yyyy' });
-=======
-    $('#n').val($(this).data('name'));
-    $('#myModal').modal('show');
-});
-
-$(document).on('click', '.edit-modal', function() {
-    $('#footer_action_button').text(" Update");
-    $('#footer_action_button').addClass('glyphicon-check');
-    $('#footer_action_button').removeClass('glyphicon-trash');
+$(document).on('click', '.edit-modal-edu', function() {
+    $('#footer_action_button_edu').text(" Update");
+    $('#footer_action_button_edu').addClass('glyphicon-check');
+    $('#footer_action_button_edu').removeClass('glyphicon-trash');
     $('.actionBtn').addClass('btn-success');
     $('.actionBtn').removeClass('btn-danger');
     $('.actionBtn').addClass('edit');
     $('.modal-title').text('Edit');
     $('.deleteContent').hide();
     $('.form-horizontal').show();
-    $('#fid').val($(this).data('id'));
-    $('#p').val($(this).data('position'));
-    $('#w').val($(this).data('workplace'));
-    $('#myModal').modal('show');
+    $('#edu_id').val($(this).data('id'));
+    $('#sn').val($(this).data('sn'));
+    $('#ins').val($(this).data('ins'));
+    $('#per').val($(this).data('per'));
+    $('#deg').val($(this).data('deg'));
+    $('#loc').val($(this).data('loc'));
+    $('#myModal-edu').modal('show');
 });
 
->>>>>>> e81d41405d1b6724a3baa48f2ea7bcb4379ac42c
+$(document).on('click', '.delete-modal-edu', function() {
+    $('#footer_action_button_edu').text(" Delete");
+    $('#footer_action_button_edu').removeClass('glyphicon-check');
+    $('#footer_action_button_edu').addClass('glyphicon-trash');
+    $('.actionBtn').removeClass('btn-success');
+    $('.actionBtn').addClass('btn-danger');
+    $('.actionBtn').addClass('delete');
+    $('.modal-title').text('Delete');
+    $('.did-edu').text($(this).data('id'));
+    $('.ins').text($(this).data('ins'));
+    $('.deleteContent').show();
+    $('.form-horizontal').hide();
+    $('.edu').html($(this).data('ins'));
+    $('#myModal-edu').modal('show');
+});
+
+/*Courses*/
+$(document).on('click', '.edit-modal-c', function() {
+    $('#footer_action_button_c').text(" Update");
+    $('#footer_action_button_c').addClass('glyphicon-check');
+    $('#footer_action_button_c').removeClass('glyphicon-trash');
+    $('.actionBtn').addClass('btn-success');
+    $('.actionBtn').removeClass('btn-danger');
+    $('.actionBtn').addClass('edit');
+    $('.modal-title').text('Edit');
+    $('.deleteContent').hide();
+    $('.form-horizontal').show();
+    $('#cid').val($(this).data('id'));
+    $('#cn').val($(this).data('cn'));
+    $('#myModal-c').modal('show');
+});
+
+$(document).on('click', '.delete-modal-c', function() {
+    $('#footer_action_button_c').text(" Delete");
+    $('#footer_action_button_c').removeClass('glyphicon-check');
+    $('#footer_action_button_c').addClass('glyphicon-trash');
+    $('.actionBtn').removeClass('btn-success');
+    $('.actionBtn').addClass('btn-danger');
+    $('.actionBtn').addClass('delete');
+    $('.modal-title').text('Delete');
+    $('.did-c').text($(this).data('id'));
+    $('.deleteContent').show();
+    $('.form-horizontal').hide();
+    $('.cour').html($(this).data('cins'));
+    $('#myModal-c').modal('show');
+});
+
+
+
