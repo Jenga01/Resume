@@ -217,7 +217,7 @@ $(document).on('click', '.edit-modal-c', function() {
     $('.deleteContent').hide();
     $('.form-horizontal').show();
     $('#cid').val($(this).data('id'));
-    $('#cn').val($(this).data('cn'));
+    $('#cn').val($(this).data('course'));
     $('#myModal-c').modal('show');
 });
 
@@ -235,6 +235,89 @@ $(document).on('click', '.delete-modal-c', function() {
     $('.cour').html($(this).data('cins'));
     $('#myModal-c').modal('show');
 });
+
+/*SKILL*/
+
+$(document).on('click', '.edit-modal-skill', function() {
+    $('#footer_action_button_skill').text(" Update");
+    $('#footer_action_button_skill').addClass('glyphicon-check');
+    $('#footer_action_button_skill').removeClass('glyphicon-trash');
+    $('.actionBtn').addClass('btn-success');
+    $('.actionBtn').removeClass('btn-danger');
+    $('.actionBtn').addClass('edit');
+    $('.modal-title').text('Edit');
+    $('.deleteContent').hide();
+    $('.form-horizontal').show();
+    $('#skill-id').val($(this).data('id'));
+    $('#sk').val($(this).data('skill'));
+    $('#myModal-skill').modal('show');
+});
+
+$(document).on('click', '.delete-modal-skill', function() {
+    $('#footer_action_button_skill').text(" Delete");
+    $('#footer_action_button_skill').removeClass('glyphicon-check');
+    $('#footer_action_button_skill').addClass('glyphicon-trash');
+    $('.actionBtn').removeClass('btn-success');
+    $('.actionBtn').addClass('btn-danger');
+    $('.actionBtn').addClass('delete');
+    $('.modal-title').text('Delete');
+    $('.did-skill').text($(this).data('id'));
+    $('.deleteContent').show();
+    $('.form-horizontal').hide();
+    $('#myModal-skill').modal('show');
+});
+
+/*LANGUAGE*/
+
+
+$(document).on('click', '.delete-modal-language', function() {
+    $('#footer_action_button_language').text(" Delete");
+    $('#footer_action_button_language').removeClass('glyphicon-check');
+    $('#footer_action_button_language').addClass('glyphicon-trash');
+    $('.actionBtn').removeClass('btn-success');
+    $('.actionBtn').addClass('btn-danger');
+    $('.actionBtn').addClass('delete');
+    $('.modal-title').text('Delete');
+    $('.did-language').text($(this).data('id'));
+    $('.deleteContent').show();
+    $('.form-horizontal').hide();
+    $('#myModal-language').modal('show');
+});
+
+/*Project*/
+
+$(document).on('click', '.edit-modal-project', function() {
+    $('#footer_action_button_project').text(" Update");
+    $('#footer_action_button_project').addClass('glyphicon-check');
+    $('#footer_action_button_project').removeClass('glyphicon-trash');
+    $('.actionBtn').addClass('btn-success');
+    $('.actionBtn').removeClass('btn-danger');
+    $('.actionBtn').addClass('edit');
+    $('.modal-title').text('Edit');
+    $('.deleteContent').hide();
+    $('.form-horizontal').show();
+    $('#project-id').val($(this).data('id'));
+    $('#pro-name').val($(this).data('name'));
+    $('#pro-desc').val($(this).data('desc'));
+    $('#pro-link').val($(this).data('url'));
+    $('#myModal-project').modal('show');
+});
+
+$(document).on('click', '.delete-modal-project', function() {
+    $('#footer_action_button_project').text(" Delete");
+    $('#footer_action_button_project').removeClass('glyphicon-check');
+    $('#footer_action_button_project').addClass('glyphicon-trash');
+    $('.actionBtn').removeClass('btn-success');
+    $('.actionBtn').addClass('btn-danger');
+    $('.actionBtn').addClass('delete');
+    $('.modal-title').text('Delete');
+    $('.did-project').text($(this).data('id'));
+    $('.deleteContent').show();
+    $('.form-horizontal').hide();
+    $('#myModal-project').modal('show');
+});
+
+
 
 
 

@@ -22,12 +22,14 @@ class SkillsController extends Controller
     public function create(Request $request)
     {
 
-        $skills = new Skills();
+        for ($i=0; $i < count($request['skills']); ++$i) {
+            $skills = new Skills();
 
-        $skills->skill = $request->skill;
-        $skills->person_id = Session::get('personID');
+            $skills->skill = $request['skills'][$i];
+            $skills->person_id = Session::get('personID');
 
-        $skills->save();
+            $skills->save();
+        }
 
 
         if ($skills->save()) {
@@ -36,6 +38,25 @@ class SkillsController extends Controller
         }
 
 
+    }
+    public function update(Request $request) {
+        $skill = Skills::find($request->id);
+
+        $skill->skill = $request ->skill;
+
+
+        $skill->save();
+        return response ()->json([
+            'status' => 'Skill has been successfully edited',
+        ]);
+    }
+
+    public function delete(Request $request) {
+        Skills::find($request->id)->delete();
+
+        return response ()->json([
+            'status' => 'Skill has been deleted',
+        ]);
     }
 
 }

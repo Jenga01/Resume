@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Courses;
 use App\Education;
 use App\Experience;
+use App\Languages;
 use App\Person;
+use App\Project;
+use App\Skills;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -82,14 +85,16 @@ class PersonController extends Controller
         $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
         $education = Education::where('person_id', 'LIKE', "%$id->id%")->get();
 
-
         $courses = Courses::join('education', 'education.id', '=', 'course.institution_id')
             ->select('education.institution', 'course.course_name', 'course.institution_id', 'course.id')
             ->where('course.person_id', '=', $id->id)
             ->get();
+        $skills = Skills::where('person_id', 'LIKE', "%$id->id%")->get();
+        $languages = Languages::where('person_id', 'LIKE', "%$id->id%")->get();
+        $projects = Project::where('person_id', 'LIKE', "%$id->id%")->get();
 
 
-        return view('edit', compact('person', 'experience', 'education', 'courses'));
+        return view('edit', compact('person', 'experience', 'education', 'courses', 'skills', 'languages', 'projects'));
     }
 
     public function update(Request $request, $id)

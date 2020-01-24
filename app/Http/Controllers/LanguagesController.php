@@ -46,5 +46,14 @@ class LanguagesController extends Controller
 
 
     }
+
+
+    public function delete(Request $request) {
+        Languages::find($request->id)->delete();
+
+        return response ()->json([
+            'status' => 'Language has been deleted',
+        ]);
+    }
     //
 }

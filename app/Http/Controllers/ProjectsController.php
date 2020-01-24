@@ -47,5 +47,30 @@ class ProjectsController extends Controller
 
 
     }
+
+
+    public function update(Request $request) {
+        $project = Project::find($request->id);
+
+        $project->name = $request -> name;
+        $project->description = $request -> description;
+        $project->url = $request ->url;
+
+        $project->save();
+        return response ()->json([
+            'status' => 'Project has been edited',
+        ]);
+    }
+
+
+
+
+    public function delete(Request $request) {
+        Project::find($request->id)->delete();
+
+        return response ()->json([
+            'status' => 'Project has been deleted',
+        ]);
+    }
     //
 }

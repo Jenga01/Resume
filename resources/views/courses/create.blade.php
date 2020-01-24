@@ -49,17 +49,20 @@
 
 
             </div>
-            {{Session::put('institutionID',request()->id)}}
+            {{Session::put('institutionID_add',request()->id)}}
 
-            @if(Session::has('institutionID'))
-                <div class="alert alert-success">
-                    {{ Session::get('institutionID')}}
-                </div>
+{{--            @if(Session::has('institutionID_add'))--}}
+{{--                <div class="alert alert-success">--}}
+{{--                    {{Session::get('institutionID_add')}}--}}
+{{--                </div>--}}
 
-            @else
+{{--            @elseif(Session::has('institutionID'))--}}
+{{--                <div class="alert alert-success">--}}
+{{--                    {{Session::get('institutionID')}}--}}
+{{--                </div>--}}
 
-                {{'No session'}}
-            @endif
+{{--                {{'No session'}}--}}
+{{--            @endif--}}
 
         </div>
 

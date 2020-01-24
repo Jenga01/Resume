@@ -21,10 +21,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
-
-
-
-
+    
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/accordion.js') }}"></script>
@@ -37,14 +34,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-
-
-
-
-
-
-
 
 
     <!-- Latest compiled JavaScript -->
@@ -171,82 +160,82 @@
             @yield('content')
         </main>
 
-                @yield('edit-work')
-                <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"></h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
+        @yield('edit-work')
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
 
-                                        <div class="col-sm-10">
-                                            <input type="hidden" class="form-control" id="fid" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="position">Position:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text"  class="form-control" id="pos">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="workplace">Workplace:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text"  class="form-control" id="work">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="period">Period:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="period" class="form-control" id="per">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="period">Responsibilities::</label>
-                                        <div class="col-sm-10">
-                                            <input type="text"  class="form-control" id="resp">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="tools">Tools:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="stack">
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="deleteContent">
-                                    Are you Sure you want to delete <span id="pos" class="pos"></span> Position at
-                                    <span
-                                        class="hidden work"></span>?
-                                    <span
-                                        class="hidden did-exp" style="" ></span>
+                                <div class="col-sm-10">
+                                    <input type="hidden" class="form-control" id="fid" disabled>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn actionBtn" data-dismiss="modal">
-                                        <span id="footer_action_button" class='glyphicon'> </span>
-                                    </button>
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                        <span class='glyphicon glyphicon-remove'></span> Close
-                                    </button>
-                                </div>
-6
                             </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="position">Position:</label>
+                                <div class="col-sm-10">
+                                    <input type="text"  class="form-control" id="pos">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="workplace">Workplace:</label>
+                                <div class="col-sm-10">
+                                    <input type="text"  class="form-control" id="work">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="period">Period:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="period" class="form-control" id="per">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="period">Responsibilities::</label>
+                                <div class="col-sm-10">
+                                    <input type="text"  class="form-control" id="resp">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="tools">Tools:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="stack">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="deleteContent">
+                            Are you Sure you want to delete <span id="pos" class="pos"></span> Position at
+                            <span
+                                class="hidden work"></span>?
+                            <span
+                                class="hidden did-exp" style="visibility: hidden;" ></span>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn actionBtn" data-dismiss="modal">
+                                <span id="footer_action_button" class='glyphicon'> </span>
+                            </button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                <span class='glyphicon glyphicon-remove'></span> Close
+                            </button>
+                        </div>
+                        6
                     </div>
                 </div>
-
-
             </div>
+        </div>
+
+
+    </div>
 
     @yield('edit-edu')
     <div id="myModal-edu" class="modal fade" role="dialog">
@@ -378,9 +367,149 @@
         </div>
     </div>
 
+    @yield('edit-skill')
+    <div id="myModal-skill" class="modal fade" role="dialog">
+
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+
+                            <div class="col-sm-10">
+                                <input type="hidden" class="form-control" id="skill-id" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="course_name">Skill:</label>
+                            <div class="col-sm-10">
+                                <input type="text"  class="form-control" id="sk">
+                            </div>
+                        </div>
 
 
 
+                    </form>
+                    <div class="deleteContent">
+                        Are you Sure you want to delete this skill?<span id="sk" class="sk"></span>
+                        <span
+                            class="hidden"></span>
+                        <span
+                            class="hidden did-skill" style="visibility: hidden;"></span>
+                    </div>
+                    <div class="modal-footer-skill">
+                        <button type="button" class="btn actionBtn" data-dismiss="modal">
+                            <span id="footer_action_button_skill" class='glyphicon'> </span>
+                        </button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                            <span class='glyphicon glyphicon-remove'></span> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @yield('edit-language')
+    <div id="myModal-language" class="modal fade" role="dialog">
+
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="deleteContent">
+                        Are you Sure you want to delete this language?<span id="lang" class="lang"></span>
+                        <span
+                            class="hidden"></span>
+                        <span
+                            class="hidden did-language" style="visibility: hidden;"></span>
+                    </div>
+                    <div class="modal-footer-language">
+                        <button type="button" class="btn actionBtn" data-dismiss="modal">
+                            <span id="footer_action_button_language" class='glyphicon'> </span>
+                        </button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                            <span class='glyphicon glyphicon-remove'></span> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @yield('edit-project')
+    <div id="myModal-project" class="modal fade" role="dialog">
+
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <input type="hidden" class="form-control" id="project-id" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="project_name">Project:</label>
+                            <div class="col-sm-10">
+                                <input type="text"  class="form-control" id="pro-name">
+                            </div>
+                        </div>   <div class="form-group">
+                            <label class="control-label col-sm-2" for="project_desc">Description:</label>
+                            <div class="col-sm-10">
+                                <textarea  class="form-control" id="pro-desc"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="project_link">Link:</label>
+                            <div class="col-sm-10">
+                                <input type="text"  class="form-control" id="pro-link">
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div class="deleteContent">
+                        Are you Sure you want to delete this project?<span id="lang" class="lang"></span>
+                        <span
+                            class="hidden"></span>
+                        <span
+                            class="hidden did-project" style="visibility: hidden;"></span>
+                    </div>
+                    <div class="modal-footer-project">
+                        <button type="button" class="btn actionBtn" data-dismiss="modal">
+                            <span id="footer_action_button_project" class='glyphicon'> </span>
+                        </button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                            <span class='glyphicon glyphicon-remove'></span> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

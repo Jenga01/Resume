@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
 
-
-
     $('.modal-footer').on('click', '.edit', function () {
+        var div=$('#refresh').html();
         $.ajax({
+
             type: 'patch',
             url: '/experience/edit/work',
             data: {
@@ -21,7 +21,8 @@ $(document).ready(function() {
                     color: 'green'
                 });
 
-                setTimeout(() => window.location.reload(), 1000);
+                $("#work-refresh").load(" #work-refresh");
+
             },
 
             error: function (result) {
@@ -50,8 +51,9 @@ $(document).ready(function() {
                 ohSnap(data.status, {
                     color: 'green'
                 });
+                $("#work-refresh").load(" #work-refresh");
 
-                setTimeout(() => window.location.reload(), 1000);
+
             },
         })
     });
@@ -75,8 +77,8 @@ $(document).ready(function() {
                 ohSnap(data.status, {
                     color: 'green'
                 });
+                $("#edu-refresh").load(" #edu-refresh");
 
-                setTimeout(() => window.location.reload(), 1000);
             },
 
             error: function (result) {
@@ -105,8 +107,9 @@ $(document).ready(function() {
                 ohSnap(data.status, {
                     color: 'green'
                 });
+                $("#edu-refresh").load(" #edu-refresh");
+                $("#cour-refresh").load(" #cour-refresh");
 
-                setTimeout(() => window.location.reload(), 1000);
             },
         });
     });
@@ -127,6 +130,7 @@ $(document).ready(function() {
                 ohSnap(data.status, {
                     color: 'green'
                 });
+                $("#cour-refresh").load(" #cour-refresh");
             },
 
             error: function (result) {
@@ -155,9 +159,152 @@ $(document).ready(function() {
                 ohSnap(data.status, {
                     color: 'green'
                 });
+                $("#cour-refresh").load(" #cour-refresh");
 
-                setTimeout(() => window.location.reload(), 1000);
+
             },
+        });
+    });
+
+
+    $('.modal-footer-skill').on('click', '.edit', function () {
+
+        $.ajax({
+            type: 'patch',
+            url: '/skill/edit',
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': $("#skill-id").val(),
+                'skill': $('#sk').val(),
+
+            },
+            success: function (data) {
+                ohSnap(data.status, {
+                    color: 'green'
+                });
+                $("#skills-refresh").load(" #skills-refresh");
+            },
+
+            error: function (result) {
+                var errors = '';
+                for (results in result.responseJSON) {
+                    errors += result.responseJSON[results] + '<br>';
+                    ohSnap(errors, {
+                        color: 'red'
+                    });
+                }
+
+
+            }
+        });
+    });
+
+    $('.modal-footer-skill').on('click', '.delete', function() {
+        $.ajax({
+            type: 'post',
+            url: '/skill/delete',
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': $('.did-skill').text()
+            },
+            success: function(data) {
+                ohSnap(data.status, {
+                    color: 'green'
+                });
+                $("#skills-refresh").load(" #skills-refresh");
+
+            },
+        });
+    });
+
+    $('.modal-footer-language').on('click', '.delete', function() {
+        $.ajax({
+            type: 'post',
+            url: '/language/delete',
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': $('.did-language').text()
+            },
+            success: function(data) {
+                ohSnap(data.status, {
+                    color: 'green'
+                });
+                $("#language-refresh").load(" #language-refresh");
+
+            },
+
+        });
+    });
+
+    $('.modal-footer-skill').on('click', '.edit', function () {
+
+        $.ajax({
+            type: 'patch',
+            url: '/skill/edit',
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': $("#skill-id").val(),
+                'skill': $('#sk').val(),
+
+            },
+            success: function (data) {
+                ohSnap(data.status, {
+                    color: 'green'
+                });
+                $("#skills-refresh").load(" #skills-refresh");
+            },
+
+            error: function (result) {
+                var errors = '';
+                for (results in result.responseJSON) {
+                    errors += result.responseJSON[results] + '<br>';
+                    ohSnap(errors, {
+                        color: 'red'
+                    });
+                }
+
+
+            }
+        });
+    });
+
+    $('.modal-footer-project').on('click', '.edit', function() {
+        $.ajax({
+            type: 'patch',
+            url: '/project/edit',
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': $('#project-id').val(),
+                'name': $('#pro-name').val(),
+                'description': $('#pro-desc').val(),
+                'url': $('#pro-link').val()
+            },
+            success: function(data) {
+                ohSnap(data.status, {
+                    color: 'green'
+                });
+                $("#project-refresh").load(" #project-refresh");
+
+            },
+        });
+    });
+
+    $('.modal-footer-project').on('click', '.delete', function() {
+        $.ajax({
+            type: 'post',
+            url: '/project/delete',
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': $('.did-project').text()
+            },
+            success: function(data) {
+                ohSnap(data.status, {
+                    color: 'green'
+                });
+                $("#project-refresh").load(" #project-refresh");
+
+            },
+
         });
     });
 

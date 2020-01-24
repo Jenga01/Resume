@@ -59,6 +59,16 @@ Route::post('education/delete', 'EducationController@delete' )->name('delete.edu
 Route::patch('education/edit/course', 'CoursesController@update' )->name('update.course');
 Route::post('education/course/delete', 'CoursesController@delete' )->name('update.course');
 
+Route::patch('skill/edit', 'SkillsController@update' )->name('update.skill');
+Route::post('skill/delete', 'SkillsController@delete' )->name('delete.skill');
+
+Route::post('language/delete', 'LanguagesController@delete' )->name('delete.language');
+
+Route::patch('project/edit', 'ProjectsController@update' )->name('update.project');
+Route::post('project/delete', 'ProjectsController@delete' )->name('delete.project');
+
+
+
 
 //Route::get('/edit', 'AjaxController@show');
 

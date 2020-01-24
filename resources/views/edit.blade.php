@@ -33,7 +33,7 @@
             <div>
 
 
-              <div class="container">
+                <div class="container">
 
                     <div class="row">
 
@@ -139,65 +139,66 @@
 
 
 
-                <div class="container">
+            <div class="container" id="work-refresh">
 
-                    <div class="row">
+                <div class="row">
 
-                        {{ csrf_field() }}
-                        <div class="table-responsive text-center">
-                            <table class="table table-borderless" id="table">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">Position</th>
-                                    <th class="text-center">Workplace</th>
-                                    <th class="text-center">Actions</th>
+                    {{ csrf_field() }}
+                    <div class="table-responsive text-center">
+                        <table class="table table-borderless" id="table">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Position</th>
+                                <th class="text-center">Workplace</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                            </thead>
+                            @foreach($experience as $exp)
+                                <tr class="item{{$exp->id}}">
+                                    <td>{{$exp->position}}</td>
+
+                                    <td>{{$exp->workplace}}</td>
+                                    <td><button class="edit-modal-work btn btn-info" data-id="{{$exp->id}}"
+                                                data-pos="{{$exp->position}}"
+                                                data-work="{{$exp->workplace}}"
+                                                data-per="{{$exp->period}}"
+                                                data-resp="{{$exp->responsibilities}}"
+                                                data-tools="{{$exp->stack}}">
+
+                                            <span class="glyphicon glyphicon-edit"></span> Edit
+                                        </button>
+                                        <button class="delete-modal btn btn-danger" data-id="{{$exp->id}}"
+                                                data-pos="{{$exp->position}}"
+                                                data-work="{{$exp->workplace}}">
+                                            <span class="glyphicon glyphicon-trash"></span> Delete
+                                        </button></td>
                                 </tr>
-                                </thead>
-                                @foreach($experience as $exp)
-                                    <tr class="item{{$exp->id}}">
-                                        <td>{{$exp->position}}</td>
-
-                                        <td>{{$exp->workplace}}</td>
-                                        <td><button class="edit-modal-work btn btn-info" data-id="{{$exp->id}}"
-                                                    data-pos="{{$exp->position}}"
-                                                    data-work="{{$exp->workplace}}"
-                                                    data-per="{{$exp->period}}"
-                                                    data-resp="{{$exp->responsibilities}}"
-                                                    data-tools="{{$exp->stack}}">
-
-                                                <span class="glyphicon glyphicon-edit"></span> Edit
-                                            </button>
-                                            <button class="delete-modal btn btn-danger" data-id="{{$exp->id}}"
-                                                    data-pos="{{$exp->position}}"
-                                                    data-work="{{$exp->workplace}}">
-                                                <span class="glyphicon glyphicon-trash"></span> Delete
-                                            </button></td>
-                                    </tr>
-                                @endforeach
-                            </table>
-                        </div>
-
-                            <div class="container">
-
-                                @section('edit-work')
-                                @endsection
-                            </div>
-
+                            @endforeach
+                        </table>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="container">
 
-                        {{link_to('create-cv/experience', $title = 'Add work experience', $attributes = ['class' => 'btn btn-primary','id' => 'exp'], $secure = null)}}
-
+                        @section('edit-work')
+                        @endsection
                     </div>
+
                 </div>
+
+                <div class="col-md-6">
+
+                    {{link_to('create-cv/experience', $title = 'Add work experience', $attributes = ['class' => 'btn btn-primary','id' => 'exp'], $secure = null)}}
+
+                </div>
+            </div>
+
 
 
 
 
 
             <h3 style="background-color: #38c172;">Education</h3>
-            <div class="container">
+            <div class="container" id="edu-refresh">
                 {{ csrf_field() }}
                 <div class="table-responsive text-center">
                     <table class="table table-borderless" id="table">
@@ -235,7 +236,7 @@
                                     </button>
 
 
-                                        <a href="{{route('person.education.courses', ['id' => $edu->id])}}" class="btn btn-info btn-xs" role="button">Add courses</a>
+                                    <a href="{{route('person.education.courses', ['id' => $edu->id])}}" class="btn btn-info btn-xs" role="button">Add courses</a>
 
 
 
@@ -267,7 +268,7 @@
 
 
 
-            <div class="container">
+            <div class="container" id="cour-refresh">
                 {{ csrf_field() }}
                 <div class="table-responsive text-center">
                     <table class="table table-borderless" id="table">
@@ -275,7 +276,6 @@
                         <tr>
                             <th class="text-center">Instituition</th>
                             <th class="text-center">Course name</th>
-                            <th class="text-center">id</th>
 
                             <th class="text-center">Actions</th>
                         </tr>
@@ -288,15 +288,13 @@
                             <tr class="item{{$c->id}}">
                                 <td>{{$c->institution}}</td>
                                 <td>{{$c->course_name}}</td>
-                                <td>{{$c->id}}</td>
-
 
                                 <td><button class="edit-modal-c btn btn-info" data-id="{{$c->id}}"
-                                            data-cn="{{$c->course_name}}">
+                                            data-course="{{$c->course_name}}">
                                         <span class="glyphicon glyphicon-edit"></span> Edit
                                     </button>
                                     <button class="delete-modal-c btn btn-danger" data-id="{{$c->id}}"
-                                            data-cn="{{$c->course_name}}">
+                                            data-course="{{$c->course_name}}">
                                         <span class="glyphicon glyphicon-trash"></span> Delete
                                     </button>
 
@@ -319,10 +317,168 @@
 
             </div>
 
+            <h3 style="background-color: #38c172;">Skills</h3>
+
+
+            <div class="container" id="skills-refresh">
+                {{ csrf_field() }}
+                <div class="table-responsive text-center">
+                    <table class="table table-borderless" id="table">
+                        <thead>
+                        <tr>
+                            <th class="text-center">Skill</th>
+
+                            <th class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+
+
+
+
+                        @foreach($skills as $s)
+                            <tr class="item{{$s->id}}">
+                                <td>{{$s->skill}}</td>
+
+
+
+                                <td><button class="edit-modal-skill btn btn-info" data-id="{{$s->id}}"
+                                            data-skill="{{$s->skill}}">
+                                        <span class="glyphicon glyphicon-edit"></span> Edit
+                                    </button>
+                                    <button class="delete-modal-skill btn btn-danger" data-id="{{$s->id}}"
+                                            data-skill="{{$s->skill}}">
+                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                    </button>
+
+
+                                </td>
+
+                            </tr>
+                        @endforeach
+
+
+
+                    </table>
+
+                    <div class="container">
+
+                        @section('edit-skill')
+                        @endsection
+                    </div>
+
+
+                </div>
+
+                {{link_to('create-cv/skills', $title = 'Add Personal skills', $attributes = ['class' => 'btn btn-primary','id' => 'skl'], $secure = null)}}
+            </div>
+
+
+            <h3 style="background-color: #38c172;">Languages</h3>
+
+
+            <div class="container" id="language-refresh">
+                {{ csrf_field() }}
+                <div class="table-responsive text-center">
+                    <table class="table table-borderless" id="table">
+                        <thead>
+                        <tr>
+                            <th class="text-center">Language</th>
+
+                            <th class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+
+
+
+
+                        @foreach($languages as $l)
+                            <tr class="item{{$l->id}}">
+                                <td>{{$l->language}}</td>
+
+
+
+                                <td>
+                                    <button class="delete-modal-language btn btn-danger" data-id="{{$l->id}}"
+                                            data-language="{{$l->language}}">
+                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                    </button>
+
+
+                                </td>
+
+                            </tr>
+                        @endforeach
+
+
+
+                    </table>
+
+                    <div class="container">
+
+                        @section('edit-language')
+                        @endsection
+                    </div>
+
+
+                </div>
+
+                {{link_to('create-cv/languages', $title = 'Add language', $attributes = ['class' => 'btn btn-primary','id' => 'skl'], $secure = null)}}
+            </div>
+
+            <h3 style="background-color: #38c172;">Projects</h3>
+
+
+            <div class="container" id="project-refresh">
+                {{ csrf_field() }}
+                <div class="table-responsive text-center">
+                    <table class="table table-borderless" id="table">
+                        <thead>
+                        <tr>
+                            <th class="text-center">Project</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+
+
+                        @foreach($projects as $p)
+                            <tr class="item{{$p->id}}">
+                                <td>{{$p->name}}</td>
+
+                                <td>
+                                    <button class="edit-modal-project btn btn-info" data-id="{{$p->id}}"
+                                            data-name="{{$p->name}}"
+                                            data-desc="{{$p->description}}"
+                                            data-url="{{$p->url}}">
+                                        <span class="glyphicon glyphicon-edit"></span> Edit
+                                    </button>
+
+                                    <button class="delete-modal-project btn btn-danger" data-id="{{$p->id}}"
+                                            data-name="{{$p->name}}">
+                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                    </button>
+
+                                </td>
+
+                            </tr>
+                        @endforeach
+
+
+                    </table>
+
+                    <div class="container">
+
+                        @section('edit-project')
+                        @endsection
+                    </div>
+
+
+                </div>
+
+                {{link_to('create-cv/projects', $title = 'Add Project', $attributes = ['class' => 'btn btn-primary','id' => 'skl'], $secure = null)}}
+            </div>
         </div>
     </div>
 
 
 
 @endsection
-
