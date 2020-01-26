@@ -52,6 +52,13 @@ class ExperienceController extends Controller
 
     }
 
+    public function edit($id){
+
+        $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
+
+        return view('experience.edit', compact('experience'));
+    }
+
     public function update(Request $request) {
         $experience = Experience::find($request->id);
 

@@ -43,12 +43,11 @@ Route::post('/create-cv/projects', 'ProjectsController@create')->name('projects'
 
 /*EDIT*/
 Route::get('person/{person}/edit', 'PersonController@edit')->name('person.edit');
+
 Route::put('person/edit/{id}', 'PersonController@update')->name('person.update');
-Route::put('experience/edit/{id}', 'ExperienceController@update')->name('person.experience.update');
+//Route::put('experience/edit/{id}', 'ExperienceController@update')->name('person.experience.update');
 
 /*AJAX*/
-
-//Route::get('test', ['uses'=>'UserController@index', 'as'=>'test.index']);
 
 Route::patch('experience/edit/work', 'ExperienceController@update' )->name('edit.experience');
 Route::post('experience/delete', 'ExperienceController@delete' )->name('delete.experience');
@@ -75,7 +74,7 @@ Route::post('project/delete', 'ProjectsController@delete' )->name('delete.projec
 
 /*Displaying*/
 
-Route::get('/cv/{id}', 'showcvController@show');
+Route::get('/resume/{person}', 'showcvController@show')->name('show.cv');
 
 
 Route::model('person', 'App\Person');

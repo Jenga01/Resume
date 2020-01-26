@@ -137,7 +137,7 @@
 
                     </div>
                     <div class="col-sm-8">
-                        <img src="{{ asset($p->image) }}"/>
+                        <img src="{{ asset('public/').$p->image}}"/>
                     </div>
                     <div class="col-sm-3">
                         <p>
@@ -260,6 +260,28 @@
 
         @endforeach
                         @endif
+
+        <div class="social-buttons">
+
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{route('show.cv', $p)}}&title={{$p->title}}"
+               target="_blank" class="share-popup">
+                <i class="fa fa-linkedin"></i>
+            </a>
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{route('show.cv', $p)}}&t={{$p->title}}"
+               target="_blank" class="share-popup">
+                <i class="fa fa-facebook"></i>
+            </a>
+
+            <a href="http://www.twitter.com/intent/tweet?url={{route('show.cv', $p)}}&via=TWITTER_HANDLE_HERE&text={{$p->title}}"
+               target="_blank" class="share-popup">
+                <i class="fa fa-twitter"></i>
+            </a>
+
+        </div>
+
+
+
 
 
     </div>

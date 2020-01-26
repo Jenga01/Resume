@@ -143,6 +143,7 @@
 
                 <div class="row">
 
+
                     {{ csrf_field() }}
                     <div class="table-responsive text-center">
                         <table class="table table-borderless" id="table">
@@ -154,6 +155,7 @@
                             </tr>
                             </thead>
                             @foreach($experience as $exp)
+
                                 <tr class="item{{$exp->id}}">
                                     <td>{{$exp->position}}</td>
 

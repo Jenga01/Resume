@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use PDF;
-use Vinkla\Hashids\Facades\Hashids;
+
 
 class pdfController extends Controller
 {
@@ -20,7 +20,7 @@ class pdfController extends Controller
 
 
 
-        $person = Person::find($id);
+        $person = Person::findOrFail($id);
         $fileName = Person::where('id', 'LIKE', "%$id->id%")->pluck('name')->first();
         $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
 

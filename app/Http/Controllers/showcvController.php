@@ -17,10 +17,11 @@ class showcvController extends Controller
 
     public  function show($id){
 
-        $person = Person::where('id', '=', $id)->get();
-        $experience = Experience::where('person_id', '=', $id)->get();
-        $education = Education::where('person_id', '=', $id)->get();
-        $courses = Courses::where('person_id', '=', $id)->get();
+        //$person = Person::where('id', '=', $id)->get();
+        $person = Person::findOrFail($id);
+        $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
+        $education = Education::where('person_id', 'LIKE', "%$id->id%")->get();
+        $courses = Courses::where('person_id', 'LIKE', "%$id->id%")->get();
 
 
 

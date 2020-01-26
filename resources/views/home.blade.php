@@ -40,6 +40,7 @@
                                             <td>Title</td>
                                             <td>Name</td>
 
+
                                             <td colspan = 2>Actions</td>
                                         </tr>
                                         </thead>
@@ -51,6 +52,9 @@
                                                 <td>{{$p->name}}</td>
                                                 <td>
                                                     <a href="{{ route('person.edit',$p)}}" class="btn btn-primary">Edit</a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('show.cv',$p)}}" class="btn btn-primary" target="_blank">show CV</a>
                                                 </td>
                                                 <td>
                                                     {{--                                                <form action="{{ route('person.destroy', $p->id)}}" method="post">--}}
