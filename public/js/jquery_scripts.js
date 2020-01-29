@@ -1,3 +1,18 @@
+$(document).on('click', '.delete-modal', function() {
+    $('#footer_action_button_res').text(" Delete");
+    $('#footer_action_button_res').removeClass('glyphicon-check');
+    $('#footer_action_button_res').addClass('glyphicon-trash');
+    $('.actionBtn').removeClass('btn-success');
+    $('.actionBtn').addClass('btn-danger');
+    $('.actionBtn').addClass('delete');
+    $('.modal-title').text('Delete');
+    $('.did-resume').text($(this).data('id'));
+    $('.deleteContent').show();
+    $('.form-horizontal').hide();
+    $('#myModal-delete-resume').modal('show');
+});
+
+
 $(document).ready(function() {
 
 

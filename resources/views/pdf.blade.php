@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -17,7 +17,10 @@
 
 
     <!-- Styles -->
-    <style>
+    <style type="text/css" media="all">
+
+        * { font-family: DejaVu Sans, sans-serif; }
+
         html, body {
             background-color: #fff;
             color: #636b6f;
@@ -25,6 +28,17 @@
             font-weight: 200;
             height: 100vh;
             margin: 0;
+        }
+        img {
+            border-radius: 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            -webkit-border-radius: 99em;
+            -moz-border-radius: 99em;
+            border-radius: 99em;
+            border: 5px solid #eee;
+            box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
         }
 
         .full-height {
@@ -83,6 +97,20 @@
         .page-break {
             page-break-after: always;
         }
+        hr.style-two {
+            border: 0;
+            height: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .badge-light{
+            font-size: small;
+            display: inline-block;
+        }
+
+        #skills-container{
+            width: 500px;
+        }
 
 
 
@@ -101,49 +129,132 @@
             Web developer and IT enthusiast
         </div>
 
-            <div class="name">
 
                 <h1>{{ $p->name }}</h1>
-            </div>
 
-                    <div class="col-sm-8">
-                        <img src="{{ url($p->image) }}">
 
-                    </div>
-        <div class="contact-info">
+        <img src="{{ asset('public/').$p->image}}">
 
-                {{$p->email . ','}}
 
-                {{ $p->phone }}
 
-                {{ $p->birthday }}
 
-                {{ $p->location }}
-
+            <div class="container">
+               <p><b>Email:</b> {{$p->email}}</p>
+               <p><b>Phone:</b> {{$p->phone }}</p>
+               <p><b>Birth date:</b> {{$p->birthday }}</p>
+               <p><b>Location:</b> {{$p->location }}</p>
                 </div>
 
 
-            </div>
+
     @endforeach
+
+    @if($experience->count() > 0)
+
             <div class="divider div-transparent"></div>
 
             <div class="page-break"></div>
+        <h4 class="display-4" >Work experience</h4>
 
-            <div class="container">
 
                 @foreach ($experience as $exp)
-                 <h1>{{ "Position: ".$exp->position }}</h1>
-                 <h1>{{ "Workplace: ".$exp->workplace }}</h1>
-                 <h1>{{ "Period: ".$exp->period }}</h1>
-                 <h1>{{ "Responsibilities: ".$exp->responsibilities }}</h1>
-                 <h1>{{ "Tools: ".$exp->stack }}</h1>
+                <p><b>Position: </b>{{ $exp->position }}</p>
+                 <p><b>Workplace: </b>{{$exp->workplace }}</p>
+                 <p><b>Period: </b>{{ $exp->period }}</p>
+                 <p><b>Responsibilities: </b>{{$exp->responsibilities }}</p>
+                 <p><b>Tools: </b>{{$exp->stack }}</p>
+
+                <hr class="style-two">
                 @endforeach
 
-                <hr class="mt-5 mb-5">
+            @endif
 
 
+
+            @if($education->count() > 0)
+
+                <div class="divider div-transparent"></div>
+                <h4 class="display-4" >Education</h4>
+
+                @foreach ($education as $edu)
+                    <p><b>Studies field: </b>{{$edu->studies_name }}</p>
+                    <p><b>Institution: </b>{{$edu->institution }}</p>
+                    <p><b>Degree: </b>
+                        @if($edu -> degree == 'B')
+                            {{"Bachelor's degree"}}
+                        @elseif($edu -> degree == 'M')
+                            {{"Master's degree"}}
+                        @else
+                            {{"Doctoral degree"}}
+                        @endif
+                    </p>
+                    <p><b>Period:</b>{{ $edu->period }}</p>
+                    <p><b>Location: </b>{{$edu->location }}</p>
+                <hr class="style-two">
+                @endforeach
+
+
+            @endif
+
+        @if($courses->count() > 0)
+
+            <div class="divider div-transparent"></div>
+            <h4 class="display-4" >Courses</h4>
+
+
+            @foreach ($courses as $course)
+                <p><b>Course name: </b>{{ $course->course_name }}</p>
+                <hr class="style-two">
+            @endforeach
+        @endif
+
+        @if($skills->count() > 0)
+
+            <div class="divider div-transparent"></div>
+            <h4 class="display-4" >Skills</h4>
+            <div class="container" id="skills-container">
+
+            @foreach ($skills as $skill)
+                <p class="badge badge-pill badge-light">{{ $skill->skill }}</p>
+
+            @endforeach
+            </div>
+        @endif
+        <hr class="style-two">
+
+
+        @if($languages->count() > 0)
+
+            <div class="divider div-transparent"></div>
+            <h4 class="display-4">Languages</h4>
+
+            @foreach ($languages as $lang)
+                <p>{{ $lang->language }}</p>
+
+            @endforeach
+        @endif
+        <hr class="style-two">
+
+        @if($projects->count() > 0)
+
+            <div class="divider div-transparent"></div>
+            <h4 class="display-4">Projects</h4>
+
+            @foreach ($projects as $project)
+                <p>{{ $project->name }}</p>
+                <p>{{ $project->description }}</p>
+                <p>{{$project->url}}</p>
+
+            @endforeach
+        @endif
+        <hr class="style-two">
 
     </div>
+
+
+
 </div>
+
+
 </body>
 </html>

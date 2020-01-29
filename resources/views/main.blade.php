@@ -1,3 +1,4 @@
+
 @foreach($person as $p)
 
 <!DOCTYPE html>
@@ -5,8 +6,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
     <title>{{ $p->name }}</title>
 
     <!-- Fonts -->
@@ -30,7 +29,9 @@
             font-weight: 200;
             height: 100vh;
             margin: 0;
+
         }
+        .container{font-size: larger;}
 
         .full-height {
             height: 100vh;
@@ -95,7 +96,6 @@
 
         .divider {
             position: relative;
-
             height: 1px;
         }
 
@@ -114,6 +114,114 @@
             margin: auto;
             width: 50%;
         }
+        .icon-bar {
+            position: fixed;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .icon-bar a{
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+
+            font-size: 20px;
+        }
+
+        .icon-bar a:hover {
+            background-color: #000;
+        }
+
+        .facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .linkedin {
+            background: #007bb5;
+            color: white;
+        }
+        .badge-light{
+            font-size: medium;
+            display: inline-block;
+        }
+        .badge-secondary{
+            font-size: medium;
+        }
+
+        #skills-container{
+            width: 500px;
+        }
+
+        .list-unstyled {
+            text-align: center;
+        }
+        .list-unstyled > ul {
+            display: inline-block;
+        }
+
+
+
+        @media screen and (max-width: 860px) {
+            .icon-bar{
+                position: initial;
+               transform: translateY(0%);
+            }
+
+            .h-divider {
+                margin: auto;
+                margin-top: 80px;
+                width: 80%;
+                position: relative;
+            }
+            .shadow{
+                box-shadow: 0 .0rem 0rem rgba(0,0,0,.15)!important;
+            }
+
+            .h-divider .shadow {
+                overflow: hidden;
+                height: 20px;
+            }
+
+            .h-divider .shadow:after {
+                content: '';
+                display: block;
+                margin: -25px auto 0;
+                width: 100%;
+                height: 25px;
+                border-radius: 125px/12px;
+                box-shadow: 0 0 8px black;
+            }
+
+
+        }
+        @media screen and (min-width: 576px) and (max-width: 767px) {
+
+            .contact-info {
+                float: left;
+                margin-top: -200px;
+            }
+        }
+
+            @media screen and (min-width: 320px) and (max-width: 576px) {
+
+                .badge-light{
+                    font-size: medium;
+                    display: block;
+                }
+
+        }
+
+
+
 
 
     </style>
@@ -131,15 +239,16 @@
             <div class="container">
                 @yield('content')
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm">
                         <h2>{{ $p->name }}</h2>
 
 
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm">
                         <img src="{{ asset('public/').$p->image}}"/>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm">
+                        <div class="contact-info">
                         <p>
                             <i class="fas fa-envelope"></i>
                             {{ $p->email }}
@@ -168,7 +277,7 @@
                         </p>
 
                     </div>
-
+                    </div>
                 </div>
             </div>
 
@@ -177,7 +286,7 @@
 
         @if($experience->count() > 0)
 
-            <h1 class="display-1" style="display: block;">Work experience</h1>
+            <h1 class="display-1">Work experience</h1>
     @foreach($experience as $exp)
 
 
@@ -243,42 +352,125 @@
                 @endif
 
 
-                @if($courses->count() > 0)
+        @if($courses->count() > 0)
 
-                    <h1 class="display-1">Courses</h1>
+            <h1 class="display-1">Courses</h1>
+            <div class="divider div-transparent"></div>
         @foreach($courses as $c)
-
-
 
             <div class="container">
                 <p class="col-sm-4" >
-                <p>
-                {{$c->course_name}}
-                </p>
+                <ul class="list-unstyled">
+                    <ul>
+                        <span class="badge badge-pill badge-secondary">{{$c->course_name}}</span>
+
+                    </ul>
+                </ul>
+
 
             </div>
 
         @endforeach
-                        @endif
+        @endif
 
-        <div class="social-buttons">
 
+        @if($skills->count() > 0)
+
+            <h1 class="display-1">Skills</h1>
+            <div class="divider div-transparent"></div>
+            <div class="container" id="skills-container">
+                <p class="col-sm-4" >
+            @foreach($skills as $s)
+
+
+
+                    <p class="badge badge-pill badge-light">
+
+                        {{$s->skill}}
+                    </p>
+
+            @endforeach
+            </div>
+        @endif
+
+
+        @if($languages->count() > 0)
+
+            <h1 class="display-1">Languages</h1>
+            <div class="divider div-transparent"></div>
+            @foreach($languages as $l)
+
+                <div class="container">
+                    <p class="col-sm-4" >
+                    <ul class="list-unstyled">
+                            <ul>
+                                <li>{{$l->language}}</li>
+                            </ul>
+                    </ul>
+
+                    </div>
+
+
+
+
+            @endforeach
+        @endif
+
+
+        @if($projects->count() > 0)
+
+            <h1 class="display-1">Projects</h1>
+            <div class="divider div-transparent"></div>
+            <div class="container">
+                <p class="col-sm-4" >
+            @foreach($projects as $p)
+
+
+                    <p>
+                        {{$p->name}}
+                    </p>
+                    <p>
+                        {{$p->description}}
+                    </p>
+                    <p>
+                        <a href="{{$p->url}}" class="btn btn-link" target="_blank">Go to the project</a>
+                    </p>
+
+            @endforeach
+            </div>
+        @endif
+
+        <div class="h-divider">
+            <div class="shadow"></div>
+        </div>
+
+        <div class="icon-bar">
+            <p>Share on:</p>
             <a href="https://www.linkedin.com/shareArticle?mini=true&url={{route('show.cv', $p)}}&title={{$p->title}}"
-               target="_blank" class="share-popup">
+               target="_blank" class="share-popup" style="background: #007bb5; color: white;">
                 <i class="fa fa-linkedin"></i>
             </a>
 
             <a href="https://www.facebook.com/sharer/sharer.php?u={{route('show.cv', $p)}}&t={{$p->title}}"
-               target="_blank" class="share-popup">
+               target="_blank" class="share-popup" style="background: #3B5998;color: white;">
                 <i class="fa fa-facebook"></i>
             </a>
 
             <a href="http://www.twitter.com/intent/tweet?url={{route('show.cv', $p)}}&via=TWITTER_HANDLE_HERE&text={{$p->title}}"
-               target="_blank" class="share-popup">
+               target="_blank" class="share-popup" style="background: #55ACEE; color: white;">
                 <i class="fa fa-twitter"></i>
             </a>
 
         </div>
+        <div class="divider div-transparent"></div>
+
+
+            <div class="container">
+                <p class="bg-light text-dark" style="font-size: large; margin-top: 20px;"><a href="http://resumetec.site/home" target="_blank">Interested in creating Resume like this?</a></p>
+            </div>
+
+
+
 
 
 

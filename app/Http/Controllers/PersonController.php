@@ -129,6 +129,12 @@ class PersonController extends Controller
         }
     }
 
+    public function delete(Request $request) {
+
+        Person::find($request->id)->delete();
+
+        return redirect()->back()->with('alert-success', 'Resume has been deleted successfully');
+    }
 
 
 

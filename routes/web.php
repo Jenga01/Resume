@@ -18,8 +18,6 @@ Route::get('/', function () {
 });
 
 
-
-
 /*CREATE*/
 
 Route::get('/create-cv', 'PersonController@index')->name('create-cv');
@@ -45,9 +43,10 @@ Route::post('/create-cv/projects', 'ProjectsController@create')->name('projects'
 Route::get('person/{person}/edit', 'PersonController@edit')->name('person.edit');
 
 Route::put('person/edit/{id}', 'PersonController@update')->name('person.update');
+Route::get('person/delete/{id}', 'PersonController@delete')->name('person.delete');
 //Route::put('experience/edit/{id}', 'ExperienceController@update')->name('person.experience.update');
 
-/*AJAX*/
+/*AJAX UPDATE/DELETE*/
 
 Route::patch('experience/edit/work', 'ExperienceController@update' )->name('edit.experience');
 Route::post('experience/delete', 'ExperienceController@delete' )->name('delete.experience');
@@ -69,19 +68,15 @@ Route::post('project/delete', 'ProjectsController@delete' )->name('delete.projec
 
 
 
-//Route::get('/edit', 'AjaxController@show');
-
-
 /*Displaying*/
 
 Route::get('/resume/{person}', 'showcvController@show')->name('show.cv');
 
-
-Route::model('person', 'App\Person');
+/*PDF*/
 Route::get('downloadPDF/{person}', 'pdfController@saveToPDF')->name('person.pdf');
 
 
-
+Route::model('person', 'App\Person');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

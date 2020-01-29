@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="3b6eefe3-04b4-4d10-9c99-a8ad1728b5d8" name="resumetec" url="http://leukonija.serveriai.lt">
+      <webServer id="3b6eefe3-04b4-4d10-9c99-a8ad1728b5d8" name="resumetec" url="leukonija.serveriai.lt">
         <fileTransfer host="leukonija.serveriai.lt" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
