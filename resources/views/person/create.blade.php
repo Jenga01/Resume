@@ -66,7 +66,15 @@
                 <div class="form-group">
                     {!! Form::label('linkedin', 'Linkedin:', ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('linkedin', $value = null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                        {!! Form::text('linkedin', $value = null, ['class' => 'form-control', 'placeholder' => 'Link to linkedin profile']) !!}
+                    </div>
+                </div>
+
+                <!-- Github profile -->
+                <div class="form-group">
+                    {!! Form::label('github', 'github:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('github', $value = null, ['class' => 'form-control', 'placeholder' => 'Link to github profile']) !!}
                     </div>
                 </div>
 

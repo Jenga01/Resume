@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePersonsTable extends Migration
+class CreatePersonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,7 +21,8 @@ class CreatePersonsTable extends Migration
             $table->string('phone', 12);
             $table->date('birthday');
             $table->string('location');
-            $table->string('linkedin');
+            $table->string('linkedin')->nullable();
+            $table->string('github_profile')->nullable();
             $table->string('image');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

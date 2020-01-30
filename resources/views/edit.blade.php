@@ -105,9 +105,18 @@
                                     </div>
                                 </div>
 
+                                <!-- Github profile -->
                                 <div class="form-group">
+                                    {!! Form::label('github', 'github:', ['class' => 'col-lg-2 control-label']) !!}
                                     <div class="col-lg-10">
-                                        <img src="{{$p->image}}">
+                                        {!! Form::text('github', $p->github_profile, ['class' => 'form-control', 'placeholder' => 'Link to github profile']) !!}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {!! Form::label('photo', 'Current photo:', ['class' => 'col-lg-2 control-label']) !!}
+                                    <div class="col-lg-10">
+                                        <img src="{{ asset('public/').$p->image}}"/>
                                     </div>
                                 </div>
 

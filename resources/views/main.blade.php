@@ -265,10 +265,19 @@
                             {{ $p->location }}
 
                         </p>
+                            @if($p->linkedin != '')
                         <p>
                             <i class="fa fa-linkedin-square"></i>
-                            <a href="{{$p->linkedin}}">linkedin</a>
+                            <a href="{{$p->linkedin}}" target="_blank">Linkedin profile</a>
                         </p>
+                            @endif
+
+                            @if($p->github_profile != '')
+                            <p>
+                                <i class="fa fa-github" aria-hidden="true"></i>
+                                <a href="{{$p->github_profile}}" target="_blank">Github profile</a>
+                            </p>
+                            @endif
                         @endforeach
 
                         <p>

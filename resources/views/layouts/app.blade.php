@@ -15,11 +15,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/css/bootstrap-social.css')}}" />
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
+    <script src="https://kit.fontawesome.com/8c15c4443d.js" crossorigin="anonymous"></script>
 
 
     <!-- Scripts -->
@@ -68,7 +69,28 @@
         .fade:not(.show) {
             opacity: 0.9;
         }
+        #social-legend{
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 21px;
+            line-height: inherit;
+            color: #333;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .btn#git-log:hover{
+            color: white !important;
+            opacity: 0.8 !important;
+        }
+       .btn#git-log{
+           background-color: #1b1e21 !important;
+           color: white !important;
 
+       }
+        .btn-block {
+
+            width: 50% !important;
+        }
 
     </style>
 </head>
@@ -109,6 +131,11 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{--                                    {{ Auth::user()->id }}--}}
                                 {{ Auth::user()->name }} <span class="caret"></span>
+                                @if( Auth::user()->name == null)
+                               <img width="20" height="20" src="{{ Auth::user()->avatar }} "><span class="caret"></span>
+                                    {{ Auth::user()->email }} <span class="caret"></span>
+
+                            @endif
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

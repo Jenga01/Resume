@@ -14,8 +14,12 @@
 
 
 Route::get('/', function () {
+    if(Auth::check()){
+        return Redirect::to('home');
+    }else
     return view('auth.login');
 });
+
 
 
 /*CREATE*/
@@ -80,6 +84,11 @@ Route::model('person', 'App\Person');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*social login*/
+
+Route::get('/auth/redirect/{driver}', 'Auth\LoginController@redirect');
+Route::get('/callback/{driver}', 'Auth\LoginController@callback');
 
 
 

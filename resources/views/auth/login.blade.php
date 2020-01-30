@@ -63,8 +63,24 @@
                                     </a>
                                 @endif
                             </div>
+
+                            <hr>
+
                         </div>
                     </form>
+                    <legend class="text-muted text-center" id="social-legend">or</legend>
+                    <div class="form-group row mb-0" style="margin-top: 20px;">
+                    <div class="col-md-8 offset-md-4">
+
+
+
+                        <a class="btn btn-block btn-github" id="git-log" href="{{ url('/auth/redirect/github') }}">
+                            <span class="fab fa-github"></span> Sign in with Github
+                        </a>
+
+
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

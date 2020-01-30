@@ -43,7 +43,6 @@ class PersonController extends Controller
             'phone' => 'required',
             'birthday' => 'required',
             'location' => 'required',
-            'linkedin' => 'required',
             'image' => 'required','image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ));
         $person = new Person();
@@ -55,6 +54,7 @@ class PersonController extends Controller
         $person-> birthday      = $request-> birthday;
         $person-> location      = $request-> location;
         $person-> linkedin     = $request-> linkedin;
+        $person-> github_profile     = $request-> github;
         $person-> user_id = Auth::id();
 
         if($request->hasFile('image'))
@@ -110,6 +110,7 @@ class PersonController extends Controller
         $person-> birthday      = $request-> birthday;
         $person-> location      = $request-> location;
         $person-> linkedin     = $request-> linkedin;
+        $person-> github_profile     = $request-> github;
 
         if($request->hasFile('image'))
         {
