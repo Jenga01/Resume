@@ -1,6 +1,5 @@
 # Resume
-- Create your CV online
-- Handle your CV's
-- Publish CV
-- Save CV as PDF
+- Create your resume 
+- Handle your resume's
+- Save resume as PDF
 - Share on social media
