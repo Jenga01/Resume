@@ -43,7 +43,7 @@ class LoginController extends Controller
     }
 
     protected $providers = [
-        'github','facebook','google','twitter'
+        'github','linkedin','google'
     ];
 
     public function redirect($driver)
@@ -95,6 +95,7 @@ class LoginController extends Controller
         if( $user ) {
             // update the avatar and provider that might have changed
             $user->update([
+                'name' => $providerUser->name,
                 'avatar' => $providerUser->avatar,
                 'provider' => $driver,
                 'provider_id' => $providerUser->id,

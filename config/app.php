@@ -174,12 +174,13 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         yajra\Datatables\DatatablesServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        BaklySystems\LaravelMessenger\LaravelMessengerServiceProvider::class,
 
 
     ],
@@ -238,6 +239,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Datatables' => yajra\Datatables\Datatables::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Messenger' => BaklySystems\LaravelMessenger\Facades\Messenger::class,
+        'Pusher' => Pusher\Pusher::class,
 
 
     ],

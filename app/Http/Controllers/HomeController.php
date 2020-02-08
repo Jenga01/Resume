@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Person;
+use App\User;
+
+use Notification;
+use App\Notifications\VisitsNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +30,13 @@ class HomeController extends Controller
     public function index()
     {
         $person = Person::where('user_id', '=', Auth::id())->get();
+
+
         return view('home')->with(compact('person'));
+
+
     }
+
+
 
 }

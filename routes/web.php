@@ -22,6 +22,19 @@ Route::get('/', function () {
 
 
 
+Route::get('/welcome', function () {
+
+        return view('welcome');
+});
+
+
+Route::get('test', function () {
+    event(new App\Http\Controllers\StatusLiked(Auth::guest()));
+    return "Event has been sent!";
+});
+
+
+
 /*CREATE*/
 
 Route::get('/create-cv', 'PersonController@index')->name('create-cv');
@@ -75,6 +88,9 @@ Route::post('project/delete', 'ProjectsController@delete' )->name('delete.projec
 /*Displaying*/
 
 Route::get('/resume/{person}', 'showcvController@show')->name('show.cv');
+
+
+
 
 /*PDF*/
 Route::get('downloadPDF/{person}', 'pdfController@saveToPDF')->name('person.pdf');

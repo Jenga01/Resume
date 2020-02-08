@@ -25,7 +25,7 @@ class pdfController extends Controller
 
 
 
-        $person = Person::findOrFail($id);
+        $person = Person::where('id', 'LIKE', "%$id->id%")->get();
         $fileName = Person::where('id', 'LIKE', "%$id->id%")->pluck('name')->first();
         $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
         $education = Education::where('person_id', 'LIKE', "%$id->id%")->get();
@@ -34,9 +34,8 @@ class pdfController extends Controller
         $languages = Languages::where('person_id', 'LIKE', "%$id->id%")->get();
         $projects = Project::where('person_id', 'LIKE', "%$id->id%")->get();
 
-        $pdf = PDF::loadView('pdf', compact('person', 'experience',  'education', 'courses', 'skills', 'languages', 'projects'));
-
-        return $pdf->download($fileName .'_CV.pdf');
+        $pdf = PDF::loadView('pdf',compact('person', 'experience',  'education', 'courses', 'skills', 'languages', 'projects'));
+        return $pdf->download($fileName .'_Resume.pdf');
 
 
     }

@@ -52,20 +52,14 @@
                         </div>
                     </div>
 
-                        {{link_to('/home', $title = 'Dashboard', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
-
                 </fieldset>
 
                     </div>
 
-
-
-
                 {!! Form::close()  !!}
 
-
             </div>
-
+        {{link_to('/home', $title = 'Dashboard', $attributes = ['class' => 'btn btn-primary','id' => 'edu'], $secure = null)}}
         </div>
 
 

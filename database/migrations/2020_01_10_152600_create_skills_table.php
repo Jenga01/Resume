@@ -17,7 +17,7 @@ class CreateSkillsTable extends Migration
             $table->bigIncrements('id');
            $table->string('skill')->nullable();
             $table->bigInteger('person_id')->unsigned();
-            $table->foreign('person_id')->references('id')->on('person');
+            $table->foreign('person_id')->references('id')->on('person')->onDelete('cascade');
 
 
         });

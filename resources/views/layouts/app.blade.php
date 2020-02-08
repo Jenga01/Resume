@@ -1,6 +1,12 @@
+
+@include('cookieConsent::index')
+
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    @yield('css-styles')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,12 +21,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
     <link rel="stylesheet" href="{{asset('public/css/bootstrap-social.css')}}" />
+    <link rel="stylesheet" href="{{asset('vendor/messenger/css/messenger.css')}}" />
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="https://kit.fontawesome.com/8c15c4443d.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-notifications.min.css">
 
 
     <!-- Scripts -->
@@ -32,6 +43,7 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -39,6 +51,9 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        @yield('js-scripts')
+    </script>
 
 
     <script>
@@ -56,6 +71,36 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
+
+        .js-cookie-consent.cookie-consent{
+            background-color: rgba(20,20,20,0.8);
+            min-height: 26px;
+            font-size: 14px;
+            color: #ccc;
+            line-height: 26px;
+            padding: 8px 0 8px 30px;
+            font-family: "Trebuchet MS",Helvetica,sans-serif;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        .js-cookie-consent-agree.cookie-consent__agree:hover{
+            color: #FFF;
+        }
+
+        .js-cookie-consent-agree.cookie-consent__agree{
+            background-color: #F1D600;
+            color: #000;
+            display: inline-block;
+            border-radius: 5px;
+            padding: 0 20px;
+            cursor: pointer;
+            float: right;
+            margin: 0 60px 0 10px;
+        }
 
         .alert-green {
             color: white;
@@ -78,7 +123,7 @@
             color: #333;
             border-bottom: 1px solid #e5e5e5;
         }
-        .btn#git-log:hover{
+        .btn#git-log :hover{
             color: white !important;
             opacity: 0.8 !important;
         }
@@ -87,10 +132,49 @@
            color: white !important;
 
        }
+       .btn#google-log{
+             color: white !important;
+             background-color: #dd4b39 !important;
+         }
+
+        .btn#linkedin-log{
+            color: white !important;
+            background-color: #007bb6 !important;
+        }
+
         .btn-block {
 
             width: 50% !important;
         }
+        @media screen and (max-width: 992px) {
+
+        #opener{
+
+            margin-top: 50px;
+            margin-left: -222px;
+        }
+        }
+        #dialog-confirm {
+            visibility:hidden;
+        }
+        #dialog-confirm.active{
+            visibility: visible;
+        }
+        #avatar-img{
+            border-radius: 50%;
+        }
+        .ui-dialog-titlebar-close{
+            height: 100px;
+            width: 100px;
+            background-color: #000000;
+            border-radius: 5px;
+        }
+
+        .ui-dialog-titlebar-close:after {
+            content: "X";
+            color: #FFF;
+        }
+
 
     </style>
 </head>
@@ -98,8 +182,15 @@
 
 
 <body>
+
+
 <div id="app">
+
+
+
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+
+
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Resumetec') }}
@@ -116,6 +207,8 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    <i class="fas fa-bell"></i>
+
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
@@ -130,9 +223,12 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{--                                    {{ Auth::user()->id }}--}}
+                                @if( Auth::user()->avatar != null)
+                                    <img width="20" height="20" id="avatar-img" src="{{ Auth::user()->avatar }} "><span class="caret"></span>
+                                    @endif
                                 {{ Auth::user()->name }} <span class="caret"></span>
                                 @if( Auth::user()->name == null)
-                               <img width="20" height="20" src="{{ Auth::user()->avatar }} "><span class="caret"></span>
+
                                     {{ Auth::user()->email }} <span class="caret"></span>
 
                             @endif
@@ -152,9 +248,18 @@
                         </li>
                     @endguest
                 </ul>
+
+
             </div>
         </div>
+
     </nav>
+
+
+
+
+
+
 
     @yield('ohsnap')
     <div class="form-group">
@@ -222,6 +327,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="control-label col-sm-2" for="company-url">Company homepage:</label>
+                                <div class="col-sm-10">
+                                    <input type="text"  class="form-control" id="comp-url">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="control-label col-sm-2" for="period">Period:</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="period" class="form-control" id="per">
@@ -231,7 +343,9 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="period">Responsibilities::</label>
                                 <div class="col-sm-10">
-                                    <input type="text"  class="form-control" id="resp">
+                                    <textarea rows="4" cols="50" type="text"  class="form-control" id="resp">
+
+                                        </textarea>
                                 </div>
                             </div>
 
@@ -257,7 +371,6 @@
                                 <span class='glyphicon glyphicon-remove'></span> Close
                             </button>
                         </div>
-                        6
                     </div>
                 </div>
             </div>
@@ -302,7 +415,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="period">Period:</label>
                             <div class="col-sm-10">
-                                <input type="text" name="period" class="form-control" id="per">
+                                <input type="text" name="period" class="form-control" id="per_edu">
                             </div>
                         </div>
 
@@ -330,7 +443,7 @@
                         <span
                             class="hidden ins"></span>?
                         <span
-                            class="hidden did-edu" ></span>
+                            class="hidden did-edu" style="visibility: hidden;"></span>
                     </div>
                     <div class="modal-footer-edu">
                         <button type="button" class="btn actionBtn" data-dismiss="modal">
@@ -539,12 +652,12 @@
             </div>
         </div>
     </div>
-
-
-
 </div>
 
 
 
+
+
 </body>
+
 </html>

@@ -15,7 +15,7 @@ class Education extends Model
 
     public function courses()
     {
-        return $this->hasMany('App\Courses', 'institution_id');
+        return $this->belongsToMany('App\Courses', 'institution_id');
     }
     //
 }

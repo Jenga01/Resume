@@ -17,13 +17,11 @@
 
                         <div class="container">
 
-                            <a href="{{url('/create-cv')}}" class="btn btn-outline-success">Create your CV</a>
+                            <a href="{{url('/create-cv')}}" id="create-cv" class="btn btn-outline-success">Create resume</a>
 
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <div class="container">
@@ -49,31 +47,38 @@
                                                 <td>{{$p->title}}</td>
                                                 <td>{{$p->name}}</td>
                                                 <td>
-                                                    <a href="{{ route('person.edit',$p)}}" class="btn btn-primary">Edit</a>
+                                                    <a href="{{ route('person.edit',$p)}}" id="edit-resume" class="btn btn-primary">Edit</a>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('show.cv',$p)}}" class="btn btn-success" target="_blank">Show Resume</a>
+                                                    <a href="{{ route('show.cv',$p)}}" id="show-resume" class="btn btn-success" target="_blank">Show Resume</a>
                                                 </td>
 
                                                 <td>
                                                     <form action="{{ route('person.delete',$p->id)}}" method="get">
 
-                                                        <button class="btn btn-danger" type="submit">Delete Resume</button>
-                                                    </form>
+                                                    <button class="delete-modal-resume btn btn-danger" id="opener">
+                                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                                    </button>
+                                                        </form>
                                                 </td>
+
                                             </tr>
+
+
                                         @endforeach
                                         </tbody>
                                     </table>
-                                    <div>
+
+
+
 
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

@@ -11,9 +11,30 @@ $(document).on('click', '.delete-modal', function() {
     $('.form-horizontal').hide();
     $('#myModal-delete-resume').modal('show');
 });
+$( function() {
+    $( "#dialog" ).dialog({
+        autoOpen: false,
+        show: {
+            effect: "blind",
+            duration: 1000
+        },
+        hide: {
+            effect: "fold",
+            duration: 1000
+        }
+    });
+
+    $( "#opener" ).on( "click", function() {
+        $( "#dialog" ).dialog( "open" );
+    });
+} );
+
+
+
 
 
 $(document).ready(function() {
+
 
 
 

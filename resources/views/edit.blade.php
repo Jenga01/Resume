@@ -172,6 +172,7 @@
                                     <td><button class="edit-modal-work btn btn-info" data-id="{{$exp->id}}"
                                                 data-pos="{{$exp->position}}"
                                                 data-work="{{$exp->workplace}}"
+                                                data-comp_url="{{$exp->company_url}}"
                                                 data-per="{{$exp->period}}"
                                                 data-resp="{{$exp->responsibilities}}"
                                                 data-tools="{{$exp->stack}}">

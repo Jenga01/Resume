@@ -13,11 +13,11 @@ class CreateLanguageTable extends Migration
      */
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('language', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('languages')->nullable();
+            $table->string('language')->nullable();
             $table->bigInteger('person_id')->unsigned();
-            $table->foreign('person_id')->references('id')->on('person');
+            $table->foreign('person_id')->references('id')->on('person')->onDelete('cascade');
         });
     }
 

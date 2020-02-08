@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>Jevgenij Bogdasic</title>
-
-    <!-- Fonts -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -18,16 +17,16 @@
 
     <!-- Styles -->
     <style type="text/css" media="all">
-
         * { font-family: DejaVu Sans, sans-serif; }
 
         html, body {
             background-color: #fff;
+            font-family: DejaVu Sans !important;
             color: #636b6f;
-            font-family: 'Nunito', sans-serif;
             font-weight: 200;
             height: 100vh;
             margin: 0;
+
         }
         img {
             border-radius: 50%;
@@ -108,9 +107,18 @@
             display: inline-block;
         }
 
-        #skills-container{
-            width: 500px;
+
+        .list-unstyled {
+            text-align: center;
         }
+        .list-unstyled > ul {
+            display: inline-block;
+        }
+
+        .btn.btn-link{
+            margin-left: 300px;
+        }
+
 
 
 
@@ -126,11 +134,12 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Web developer and IT enthusiast
+           {{$p->title}}
         </div>
 
 
-                <h1>{{ $p->name }}</h1>
+
+                <h1>{{$p->name}}</h1>
 
 
         <img src="{{ asset('public/').$p->image}}">
@@ -190,37 +199,41 @@
                     </p>
                     <p><b>Period:</b>{{ $edu->period }}</p>
                     <p><b>Location: </b>{{$edu->location }}</p>
+
+                @if($courses->count() > 0)
+
+                    <b><p><ins>Courses</ins></p></b>
+                @endif
+                @foreach($courses as $c)
+                    @if($edu->id == $c->institution_id)
+
+                               <p>{{$c->course_name}}</p>
+
+                    @endif
+                @endforeach
+
                 <hr class="style-two">
                 @endforeach
 
 
             @endif
 
-        @if($courses->count() > 0)
 
-            <div class="divider div-transparent"></div>
-            <h4 class="display-4" >Courses</h4>
-
-
-            @foreach ($courses as $course)
-                <p><b>Course name: </b>{{ $course->course_name }}</p>
-                <hr class="style-two">
-            @endforeach
-        @endif
 
         @if($skills->count() > 0)
 
             <div class="divider div-transparent"></div>
             <h4 class="display-4" >Skills</h4>
-            <div class="container" id="skills-container">
+            <div class="container">
 
             @foreach ($skills as $skill)
                 <p class="badge badge-pill badge-light">{{ $skill->skill }}</p>
 
             @endforeach
             </div>
+            <hr class="style-two">
         @endif
-        <hr class="style-two">
+
 
 
         @if($languages->count() > 0)
@@ -232,22 +245,33 @@
                 <p>{{ $lang->language }}</p>
 
             @endforeach
+            <hr class="style-two">
         @endif
-        <hr class="style-two">
+
 
         @if($projects->count() > 0)
 
             <div class="divider div-transparent"></div>
             <h4 class="display-4">Projects</h4>
+            <div class="container">
 
             @foreach ($projects as $project)
-                <p>{{ $project->name }}</p>
-                <p>{{ $project->description }}</p>
-                <p>{{$project->url}}</p>
+                <p><b>Project name:</b>
+                    {{$project->name}}
+                </p>
+                <p>
+                <p><b>Description:</b>  {{$project->description}}
+                </p>
 
+                <p>
+                    <a href="{{$project->url}}" class="btn btn-link">Go to the project</a>
+                </p>
+                <hr class="style-two">
             @endforeach
+            </div>
+
+
         @endif
-        <hr class="style-two">
 
     </div>
 

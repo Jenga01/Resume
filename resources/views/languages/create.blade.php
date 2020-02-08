@@ -43,6 +43,7 @@
 
                 {!! Form::close()  !!}
 
+                {{link_to('/home', $title = 'Dashboard', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: left;'], $secure = null)}}
 
             </div>
 

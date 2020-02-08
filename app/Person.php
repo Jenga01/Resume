@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Propaganistas\LaravelFakeId\RoutesWithFakeIds;
+use Illuminate\Notifications\Notifiable;
 
 class Person extends Model
 {
     use RoutesWithFakeIds;
+    use Notifiable;
 
     public $table = 'person';
 

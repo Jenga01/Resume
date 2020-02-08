@@ -24,7 +24,7 @@
 
                     <!-- Sudies name -->
                     <div class="form-group">
-                        {!! Form::label('studies_name', 'Studies Field:', ['class' => 'col-lg-2 control-label']) !!}
+                        {!! Form::label('studies_name', 'Studies name:', ['class' => 'col-lg-2 control-label']) !!}
                         <div class="col-lg-10">
                             {!! Form::text('studies_name', $value = null, ['class' => 'form-control', 'placeholder' => 'Studies field']) !!}
                         </div>
@@ -74,21 +74,15 @@
 
                         </div>
                     </div>
+
                     </div>
 
                 </fieldset>
 
                 {!! Form::close()  !!}
+                {{link_to('/home', $title = 'Dashboard', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: left;'], $secure = null)}}
 
-                @if(Session::has('personID'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('personID')}}
-                    </div>
 
-                    @else
-
-                    {{'No session'}}
-                @endif
 
 
             </div>

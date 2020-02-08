@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{{ $p->name }}</title>
 
     <!-- Fonts -->
@@ -25,13 +26,18 @@
         html, body {
             background-color: #fff;
             color: #636b6f;
-            font-family: 'Nunito', sans-serif;
+            font-family: DejaVu Sans;
             font-weight: 200;
             height: 100vh;
             margin: 0;
 
         }
-        .container{font-size: larger;}
+        .container{
+            font-size: larger;
+            max-width: 1000px !important;
+            font-family: "Times New Roman", Times, serif;
+
+        }
 
         .full-height {
             height: 100vh;
@@ -74,6 +80,9 @@
             border: 5px solid #eee;
             box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
         }
+        b{
+            font-weight: 900;
+        }
 
         .links > a {
             color: #636b6f;
@@ -112,7 +121,7 @@
 
         #exp {
             margin: auto;
-            width: 50%;
+            max-width: 100% !important;
         }
         .icon-bar {
             position: fixed;
@@ -170,6 +179,7 @@
 
 
 
+
         @media screen and (max-width: 860px) {
             .icon-bar{
                 position: initial;
@@ -212,10 +222,27 @@
         }
 
             @media screen and (min-width: 320px) and (max-width: 576px) {
+                .container{
+                    width: 70%;
+                    margin: auto;
+                }
 
                 .badge-light{
                     font-size: medium;
                     display: block;
+                }
+                .display-1{
+                    font-size: xx-large;
+                }
+                .title.m-b-md{
+                    font-size: 22px;
+                }
+            p{
+                font-size: medium;
+            }
+                #exp {
+                    margin: auto;
+                    max-width: 70% !important;
                 }
 
         }
@@ -227,6 +254,7 @@
     </style>
 </head>
 <body>
+
 <div class="flex-center position-ref full-height">
 
 
@@ -236,11 +264,13 @@
         </div>
 
 
+
             <div class="container">
-                @yield('content')
+
                 <div class="row">
                     <div class="col-sm">
                         <h2>{{ $p->name }}</h2>
+
 
 
                     </div>
@@ -255,7 +285,7 @@
                         </p>
 
                         <p>
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-mobile"></i>
                             {{ $p->phone }}
                         </p>
                         <i class="fas fa-calendar"></i>
@@ -277,13 +307,22 @@
                                 <i class="fa fa-github" aria-hidden="true"></i>
                                 <a href="{{$p->github_profile}}" target="_blank">Github profile</a>
                             </p>
+
+
                             @endif
                         @endforeach
 
+
                         <p>
-                            {{--<a href="{{action('pdfController@saveToPDF', $p->id)}}">Save as PDF</a>--}}
+
                             <a href="{{ route('person.pdf', $p) }}"> Save as PDF </a>
                         </p>
+
+
+
+
+
+
 
                     </div>
                     </div>
@@ -293,28 +332,28 @@
 
 
 
-        @if($experience->count() > 0)
+        @if($experiences->count() > 0)
 
             <h1 class="display-1">Work experience</h1>
-    @foreach($experience as $exp)
+    @foreach($experiences as $experience)
 
 
                 <div class="divider div-transparent"></div>
 
             <div class="container">
-                <p class="col-sm-4" id="exp">
-                <p>
-                <h1>{{$exp->position}}</h1>
-                <p>
-                <h2>{{$exp->workplace}}</h2>
-                <p>
-                <h3>{{$exp->period}}</h3>
-                <p>
-                <h4>{{$exp->responsibilities}}</h4>
-                <p>
-                <h5>{{$exp->stack}}</h5>
 
-{{--                <hr class="mt-5 mb-5">--}}
+                <p><b>Position: </b>{{ $experience->position }}</p>
+                <p><b>Workplace: </b>{{$experience->workplace }}</p>
+                <p><b>Period: </b>{{ $experience->period }}</p>
+                <p><b>Responsibilities: </b>{{$experience->responsibilities }}</p>
+                @if($experience->stack != null)
+                <p><b>Tools: </b>{{$experience->stack }}</p>
+                @endif
+                @if($experience->company_url != null)
+                    <p><b><a href="{{$experience->company_url }}" target="_blank">Company homepage</a></b></p>
+                @endif
+
+
             </div>
 
 
@@ -332,17 +371,12 @@
         @foreach($education as $edu)
 
                 <div class="divider div-transparent"></div>
-            <div class="container">
-                <p class="col-sm-4" >
-                <p>
-                    {{$edu->studies_name}}
-                </p>
-                <p>
-                    {{$edu->institution}}
-                </p>
-                <p>
-                    {{$edu->period}}
-                </p><p>
+            <div class="container" id="edu-container">
+
+                <p><b>Program name: </b>{{$edu->studies_name}}</p>
+                <p><b>Educational institution: </b>{{$edu->institution}}</p>
+                <p><b>Education period: </b>{{$edu->period}}</p>
+                <p><b>Degree: </b>
                     @if($edu -> degree == 'B')
                     {{"Bachelor's degree"}}
                         @elseif($edu -> degree == 'M')
@@ -350,37 +384,33 @@
                         @else
                         {{"Doctoral degree"}}
                         @endif
+
                 </p>
-                <p>
+                <p><b>Location:</b>
                     {{$edu->location}}
                 </p>
 
-            </div>
+
+                @foreach($courses as $course)
+                    @if($edu->id == $course->institution_id)
+
+                        <ul class="list-unstyled">
+                            <ul>
+                                <li>{{$course->course_name}}</li>
+                            </ul>
+                        </ul>
+                    @endif
+                    @endforeach
+
+
+
+
+
 
         @endforeach
                 @endif
-
-
-        @if($courses->count() > 0)
-
-            <h1 class="display-1">Courses</h1>
-            <div class="divider div-transparent"></div>
-        @foreach($courses as $c)
-
-            <div class="container">
-                <p class="col-sm-4" >
-                <ul class="list-unstyled">
-                    <ul>
-                        <span class="badge badge-pill badge-secondary">{{$c->course_name}}</span>
-
-                    </ul>
-                </ul>
-
-
             </div>
 
-        @endforeach
-        @endif
 
 
         @if($skills->count() > 0)
@@ -389,13 +419,13 @@
             <div class="divider div-transparent"></div>
             <div class="container" id="skills-container">
                 <p class="col-sm-4" >
-            @foreach($skills as $s)
+            @foreach($skills as $skill)
 
 
 
                     <p class="badge badge-pill badge-light">
 
-                        {{$s->skill}}
+                        {{$skill->skill}}
                     </p>
 
             @endforeach
@@ -407,20 +437,16 @@
 
             <h1 class="display-1">Languages</h1>
             <div class="divider div-transparent"></div>
-            @foreach($languages as $l)
+            @foreach($languages as $language)
 
                 <div class="container">
                     <p class="col-sm-4" >
                     <ul class="list-unstyled">
                             <ul>
-                                <li>{{$l->language}}</li>
+                                <li>{{$language->language}}</li>
                             </ul>
                     </ul>
-
-                    </div>
-
-
-
+                </div>
 
             @endforeach
         @endif
@@ -431,23 +457,22 @@
             <h1 class="display-1">Projects</h1>
             <div class="divider div-transparent"></div>
             <div class="container">
-                <p class="col-sm-4" >
-            @foreach($projects as $p)
 
+            @foreach($projects as $project)
 
+                        <b>Project name:</b>
+                        <p>{{$project->name}}</p>
+                    <b>Description:</b>
+                    <p>{{$project->description}}</p>
                     <p>
-                        {{$p->name}}
+                        <a href="{{$project->url}}" class="btn btn-link" target="_blank">Go to the project</a>
                     </p>
-                    <p>
-                        {{$p->description}}
-                    </p>
-                    <p>
-                        <a href="{{$p->url}}" class="btn btn-link" target="_blank">Go to the project</a>
-                    </p>
+                    <div class="divider div-transparent"></div>
 
             @endforeach
-            </div>
+
         @endif
+            </div>
 
         <div class="h-divider">
             <div class="shadow"></div>
@@ -473,10 +498,13 @@
         </div>
         <div class="divider div-transparent"></div>
 
-
+        @if(Auth::guest())
             <div class="container">
                 <p class="bg-light text-dark" style="font-size: large; margin-top: 20px;"><a href="http://resumetec.site/home" target="_blank">Interested in creating Resume like this?</a></p>
             </div>
+
+            @endif
+
 
 
 
@@ -487,5 +515,9 @@
 
     </div>
 </div>
+
 </body>
+
+
+
 </html>

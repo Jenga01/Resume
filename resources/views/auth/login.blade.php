@@ -78,6 +78,14 @@
                             <span class="fab fa-github"></span> Sign in with Github
                         </a>
 
+                        <a class="btn btn-block btn-google" id="google-log" href="{{ url('/auth/redirect/google') }}">
+                            <span class="fab fa-google"></span> Sign in with google
+                        </a>
+
+                        <a class="btn btn-block btn-linkedin" id="linkedin-log" href="{{ url('/auth/redirect/linkedin') }}">
+                            <span class="fab fa-linkedin"></span> Sign in with linkedin
+                        </a>
+
 
                     </div>
                     </div>

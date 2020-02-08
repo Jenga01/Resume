@@ -94,6 +94,7 @@ class PersonController extends Controller
         $projects = Project::where('person_id', 'LIKE', "%$id->id%")->get();
 
 
+
         return view('edit', compact('person', 'experience', 'education', 'courses', 'skills', 'languages', 'projects'));
     }
 

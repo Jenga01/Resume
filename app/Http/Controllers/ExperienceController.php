@@ -36,6 +36,7 @@ class ExperienceController extends Controller
 
         $experience->position = $request -> position;
         $experience->workplace = $request -> workplace;
+        $experience->company_url = $request -> company_url;
         $experience->period = $request -> period;
         $experience->responsibilities = $request -> responsibilities;
         $experience->stack = $request -> stack;
@@ -64,6 +65,7 @@ class ExperienceController extends Controller
 
         $experience->position = $request -> position;
         $experience->workplace = $request -> workplace;
+        $experience->company_url = $request -> company_url;
         $experience->period = $request -> period;
         $experience->responsibilities = $request -> responsibilities;
         $experience->stack = $request -> stack;

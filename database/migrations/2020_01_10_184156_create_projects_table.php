@@ -19,7 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('description');
             $table->string('url');
             $table->bigInteger('person_id')->unsigned();
-            $table->foreign('person_id')->references('id')->on('person');
+            $table->foreign('person_id')->references('id')->on('person')->onDelete('cascade');
         });
     }
 

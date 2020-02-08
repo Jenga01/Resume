@@ -17,11 +17,13 @@ class CreateExperiencesTable extends Migration
             $table->bigIncrements('id');
             $table->string('position');
             $table->string('workplace');
+            $table->string('company_url');
             $table->string('period');
             $table->string('responsibilities');
             $table->string('stack')->nullable();
             $table->bigInteger('person_id')->unsigned();
-            $table->foreign('person_id')->references('id')->on('person');
+            $table->foreign('person_id')->references('id')->on('person')->onDelete('cascade');
+
 
 
 

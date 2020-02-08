@@ -34,6 +34,14 @@
                             {!! Form::text('workplace', $value = null, ['class' => 'form-control', 'placeholder' => 'Workplace']) !!}
                         </div>
                     </div>
+
+                    <!-- Company page -->
+                    <div class="form-group">
+                        {!! Form::label('company_page', "Company's homepage:", ['class' => 'col-lg-2 control-label']) !!}
+                        <div class="col-lg-10">
+                            {!! Form::text('company_url', $value = null, ['class' => 'form-control', 'placeholder' => "Company's webpage"]) !!}
+                        </div>
+                    </div>
                     <!-- Period -->
                     <div class="form-group">
                         {!! Form::label('period', 'Period:', ['class' => 'col-lg-2 control-label']) !!}
@@ -72,12 +80,16 @@
 
 
 
+
+
                         </div>
+
                     </div>
 
                 </fieldset>
 
                 {!! Form::close()  !!}
+                {{link_to('/home', $title = 'Dashboard', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: left;'], $secure = null)}}
 
 
             </div>
