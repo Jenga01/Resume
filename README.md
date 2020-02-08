@@ -4,4 +4,4 @@
 - Save resume as PDF
 - Share on social media
 - Login through linkedin, github, google accounts or create local account.
-- Receive notifications resume visits
+- Receive notifications on resume visits
