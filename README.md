@@ -5,3 +5,4 @@
 - Share on social media
 - Login through linkedin, github, google accounts or create local account.
 - Receive notifications on resume visits
+-Multiple resumes support
