@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Not;
 use App\Person;
 use App\User;
-
-use Notification;
+use App\Notification;
+use Illuminate\Support\Facades\DB;
 use App\Notifications\VisitsNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+
 
 class HomeController extends Controller
 {
@@ -32,11 +35,18 @@ class HomeController extends Controller
         $person = Person::where('user_id', '=', Auth::id())->get();
 
 
-        return view('home')->with(compact('person'));
+       
+
+
+
+
+
+
+
+        return view('home')->with(compact('person', 'notifications'));
 
 
     }
-
 
 
 }

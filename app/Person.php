@@ -13,6 +13,7 @@ class Person extends Model
 
     public $table = 'person';
 
+
     public function user() {
         return $this->belongsTo(User::class);
     }

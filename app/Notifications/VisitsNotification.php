@@ -2,6 +2,11 @@
 
 namespace App\Notifications;
 
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,11 +14,14 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\showcvController;
 
-class VisitsNotification extends Notification
+class VisitsNotification extends Notification implements ShouldBroadcast
 {
+    use Dispatchable, InteractsWithSockets, SerializesModels;
     use Queueable;
 
     private $details;
+
+
 
     /**
      * Create a new notification instance.
@@ -23,6 +31,9 @@ class VisitsNotification extends Notification
     public function __construct($details)
     {
         $this->details = $details;
+
+
+
     }
 
     /**
@@ -61,9 +72,14 @@ class VisitsNotification extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'messege' => $this->details['messege']
+            $this->details['user_id']
+
+
+
         ];
     }
+
+
 
 
 

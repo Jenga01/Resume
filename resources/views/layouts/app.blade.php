@@ -10,6 +10,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-notifications.min.css">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -18,9 +20,9 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+
 
 
     <link rel="stylesheet" href="{{asset('public/css/bootstrap-social.css')}}" />
@@ -31,7 +33,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="https://kit.fontawesome.com/8c15c4443d.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap-notifications.min.css">
+
 
 
     <!-- Scripts -->
@@ -207,7 +209,10 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                    <i class="fas fa-bell"></i>
+
+
+                    @yield('notification-bell')
+
 
                     <!-- Authentication Links -->
                     @guest

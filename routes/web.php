@@ -22,17 +22,6 @@ Route::get('/', function () {
 
 
 
-Route::get('/welcome', function () {
-
-        return view('welcome');
-});
-
-
-Route::get('test', function () {
-    event(new App\Http\Controllers\StatusLiked(Auth::guest()));
-    return "Event has been sent!";
-});
-
 
 
 /*CREATE*/
@@ -88,6 +77,10 @@ Route::post('project/delete', 'ProjectsController@delete' )->name('delete.projec
 /*Displaying*/
 
 Route::get('/resume/{person}', 'showcvController@show')->name('show.cv');
+
+/*notifications*/
+
+Route::get('/notifications/{id?}', 'HomeController@notifications')->name('show.notifications');
 
 
 

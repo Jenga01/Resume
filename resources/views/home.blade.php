@@ -1,5 +1,24 @@
 @extends('layouts.app')
 
+@section('notification-bell')
+
+
+    <li class="nav-item avatar dropdown">
+        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="badge badge-danger ml-2">
+
+            </span>
+            <i class="fas fa-bell"></i>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+
+
+        </div>
+    </li>
+
+
+@endsection
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -82,3 +101,4 @@
 
     </div>
 @endsection
+

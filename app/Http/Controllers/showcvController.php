@@ -34,14 +34,7 @@ class showcvController extends Controller
         $languages = Languages::where('person_id', 'LIKE', "%$id->id%")->get();
         $projects = Project::where('person_id', 'LIKE', "%$id->id%")->get();
 
-        if (Auth::id()) {
 
-           $visits =  event(new Notifications\StatusLiked(Auth::user()->name));
-
-        }
-        else {
-            event(new Notifications\StatusLiked(Auth::guest()));
-        }
 
         $this->messege($person); //send notification
 
