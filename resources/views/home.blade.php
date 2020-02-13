@@ -12,7 +12,11 @@
         </a>
 
         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
-
+            @foreach($notifications as $note)
+                @if($note->data == Auth::id())
+               <p>{{$note->data}}</p>
+                @endif
+                @endforeach
 
         </div>
     </li>

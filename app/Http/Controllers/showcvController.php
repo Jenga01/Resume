@@ -26,6 +26,7 @@ class showcvController extends Controller
 
         //$person = Person::where('id', '=', $id)->get();
         $person = Person::findOrFail($id);
+        Session::put('resume_user_id', $id->user_id);
         $experiences = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
         $education = Education::where('person_id', 'LIKE', "%$id->id%")->get();
         $courses = Courses::where('person_id', 'LIKE', "%$id->id%")->get();

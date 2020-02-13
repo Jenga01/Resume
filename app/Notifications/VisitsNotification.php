@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Person;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -13,6 +14,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\showcvController;
+use App\Notifications\CustomDatabaseChannel;
 
 class VisitsNotification extends Notification implements ShouldBroadcast
 {
@@ -20,6 +22,7 @@ class VisitsNotification extends Notification implements ShouldBroadcast
     use Queueable;
 
     private $details;
+    protected $user_id;
 
 
 
@@ -28,10 +31,10 @@ class VisitsNotification extends Notification implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($details,$user)
     {
         $this->details = $details;
-
+        $this->user_id = $user;
 
 
     }
@@ -71,12 +74,8 @@ class VisitsNotification extends Notification implements ShouldBroadcast
      */
     public function toDatabase($notifiable)
     {
-        return [
-            $this->details['user_id']
+        return $this->details['messege'];
 
-
-
-        ];
     }
 
 

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Notifications\Channels\DatabaseChannel;
 use Illuminate\Support\ServiceProvider;
+use App\Notifications\CustomDatabaseChannel;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            DatabaseChannel::class,
+            CustomDatabaseChannel::class
+        );
     }
 
     /**
@@ -24,5 +29,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+
     }
+
+
 }

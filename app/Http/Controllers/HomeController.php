@@ -34,14 +34,7 @@ class HomeController extends Controller
     {
         $person = Person::where('user_id', '=', Auth::id())->get();
 
-
-       
-
-
-
-
-
-
+        $notifications = Not::where('data', '=', Auth::id())->get();
 
         return view('home')->with(compact('person', 'notifications'));
 

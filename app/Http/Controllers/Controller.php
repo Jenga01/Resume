@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Notifications\VisitsNotification;
 use App\Person;
+use App\User;
 use FontLib\Table\Type\name;
 use App\Not;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -19,6 +20,8 @@ class Controller extends BaseController
 
 
     public function messege($person){
+
+
         if(Auth::check()){
             $details = [
                 'greeting' =>'Hi, '. $person[0]->name,
@@ -27,10 +30,11 @@ class Controller extends BaseController
                 'actionText' => 'View My Site',
                 'actionURL' => url('/'),
                 'messege' => 'you had a new visitor',
-                'user_id' =>  $person[0]->user_id
-
+                'user_id' => $person[0]->user_id
             ];
-            Notification::send($person, new VisitsNotification($details));
+            $user_id = $person[0]->user_id;
+
+            Notification::send($person, new VisitsNotification($details, $user_id));
 
         }else{
 
@@ -41,10 +45,11 @@ class Controller extends BaseController
                 'actionText' => 'View My Site',
                 'actionURL' => url('/'),
                 'messege' => 'you had a new visitor',
-                'user_id' => $person[0]->user_id
+                //'user_id' => $person[0]->user_id
             ];
 
-                Notification::send($person, new VisitsNotification($details));
+                $user_id = $person[0]->user_id;
+                Notification::send($person, new VisitsNotification($details, $user_id));
 
                 //send($person, new VisitsNotification($details));
 
