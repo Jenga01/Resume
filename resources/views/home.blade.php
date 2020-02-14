@@ -3,20 +3,32 @@
 @section('notification-bell')
 
 
+
     <li class="nav-item avatar dropdown">
         <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <span class="badge badge-danger ml-2">
-
+        {{$notifications->count()}}
             </span>
             <i class="fas fa-bell"></i>
         </a>
 
         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+
+
+
             @foreach($notifications as $note)
-                @if($note->data == Auth::id())
-               <p>{{$note->data}}</p>
-                @endif
+
+
+                <p> <img src="{{$note->avatar}}" width="40px" style="border-radius: 50%;"> {{$note->name}} checked your {{$note->title}} resume {{$note->updated_at}} </p>
+
+
                 @endforeach
+
+            @if($notifications->count()>0)
+            <a href="{{route('mark.notifications')}}">Mark as read</a>
+                @else
+                No new notifications
+                @endif
 
         </div>
     </li>

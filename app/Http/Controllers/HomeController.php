@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Not;
 use App\Person;
-use App\User;
+
 use App\Notification;
-use Illuminate\Support\Facades\DB;
-use App\Notifications\VisitsNotification;
-use Illuminate\Http\Request;
+
+
 use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -34,7 +34,13 @@ class HomeController extends Controller
     {
         $person = Person::where('user_id', '=', Auth::id())->get();
 
-        $notifications = Not::where('data', '=', Auth::id())->get();
+        $notifications = Not::join('person', 'person.id', '=', 'notifiable_id')
+            ->join('users', 'users.id', '=', 'notifications.user_id')
+            ->select('users.*', 'notifications.user_id', 'person.title', 'notifications.*')
+            ->orderBy('notifications.updated_at', 'desc')
+            ->where(['resume_user_id' => Auth::id(), 'read_at'=> null])
+            ->get();
+
 
         return view('home')->with(compact('person', 'notifications'));
 

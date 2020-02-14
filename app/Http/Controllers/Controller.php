@@ -29,7 +29,7 @@ class Controller extends BaseController
                 'thanks' => 'Thank you for using Resumetec!',
                 'actionText' => 'View My Site',
                 'actionURL' => url('/'),
-                'messege' => 'you had a new visitor',
+                'messege' => 'Visited you',
                 'user_id' => $person[0]->user_id
             ];
             $user_id = $person[0]->user_id;
@@ -45,7 +45,7 @@ class Controller extends BaseController
                 'actionText' => 'View My Site',
                 'actionURL' => url('/'),
                 'messege' => 'you had a new visitor',
-                //'user_id' => $person[0]->user_id
+
             ];
 
                 $user_id = $person[0]->user_id;

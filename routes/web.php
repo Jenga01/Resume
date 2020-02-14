@@ -80,7 +80,7 @@ Route::get('/resume/{person}', 'showcvController@show')->name('show.cv');
 
 /*notifications*/
 
-Route::get('/notifications/{id?}', 'HomeController@notifications')->name('show.notifications');
+Route::get('/home/notifications', 'notificationsController@notificationRead')->name('mark.notifications');
 
 
 
