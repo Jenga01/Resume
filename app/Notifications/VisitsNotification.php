@@ -31,10 +31,10 @@ class VisitsNotification extends Notification implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($details,$user)
+    public function __construct($details)
     {
         $this->details = $details;
-        $this->user_id = $user;
+       // $this->user_id = $user;
 
 
     }

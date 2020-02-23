@@ -42,7 +42,14 @@ class HomeController extends Controller
             ->get();
 
 
-        return view('home')->with(compact('person', 'notifications'));
+        $nullUser = Not::join('person', 'person.id', '=', 'notifiable_id')
+            ->select('notifications.user_id', 'person.title', 'notifications.*')
+            ->orderBy('notifications.updated_at', 'desc')
+            ->where(['resume_user_id' => Auth::id(),'read_at'=> null, 'unauthorized'=> true])->get();
+
+
+
+        return view('home')->with(compact('person', 'notifications', 'nullUser'));
 
 
     }

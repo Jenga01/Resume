@@ -49,7 +49,7 @@ Route::post('/create-cv/projects', 'ProjectsController@create')->name('projects'
 Route::get('person/{person}/edit', 'PersonController@edit')->name('person.edit');
 
 Route::put('person/edit/{id}', 'PersonController@update')->name('person.update');
-Route::get('person/delete/{id}', 'PersonController@delete')->name('person.delete');
+Route::post('resume/delete/', 'PersonController@delete')->name('person.delete');
 //Route::put('experience/edit/{id}', 'ExperienceController@update')->name('person.experience.update');
 
 /*AJAX UPDATE/DELETE*/

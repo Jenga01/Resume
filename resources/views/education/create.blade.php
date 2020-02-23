@@ -67,7 +67,7 @@
                         <div class="col-lg-10 col-lg-offset-2">
                             {!! Form::submit('Submit', ['class' => 'btn btn-success'] ) !!}
 
-
+                            {{link_to('create-cv/skills', $title = 'Skills', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
 {{--                            {{link_to('create-cv/education', $title = 'Education', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}--}}
 
 

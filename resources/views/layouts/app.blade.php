@@ -112,6 +112,29 @@
             color: white;
             background-color: #DA4453;
         }
+        .h-divider {
+            margin: auto;
+            width: 80%;
+            position: relative;
+        }
+        .shadow{
+            box-shadow: 0 .0rem 0rem rgba(0,0,0,.15)!important;
+        }
+
+        .h-divider .shadow {
+            overflow: hidden;
+            height: 20px;
+        }
+
+        .h-divider .shadow:after {
+            content: '';
+            display: block;
+            margin: -25px auto 0;
+            width: 100%;
+            height: 25px;
+            border-radius: 125px/12px;
+            box-shadow: 0 0 8px black;
+        }
 
         .fade:not(.show) {
             opacity: 0.9;
@@ -150,11 +173,19 @@
         }
         @media screen and (max-width: 992px) {
 
+
         #opener{
 
             margin-top: 50px;
             margin-left: -222px;
         }
+
+            .dropdown-secondary.show{
+
+                width: 250px !important;
+
+            }
+
         }
         #dialog-confirm {
             visibility:hidden;
@@ -175,6 +206,29 @@
         .ui-dialog-titlebar-close:after {
             content: "X";
             color: #FFF;
+        }
+        @media screen and (min-width: 992px) {
+            .dropdown-secondary.show {
+
+                width: 250px !important;
+                margin: 8px -90px 0px 0px;
+            }
+        }
+
+        .dropdown-menu.dropdown-menu-right.show{
+            margin-top: 8px !important;
+        }
+        #read_notif{
+            float: right;
+            margin: auto;
+            width: 70%;
+        }
+        hr.dotted {
+            border-top: 3px dotted #bbb;
+        }
+        .dropdown-menu-lg-right{
+            max-height: 500px;
+            overflow: auto;
         }
 
 
@@ -212,7 +266,7 @@
                 <ul class="navbar-nav ml-auto">
 
 
-                    @yield('notification-bell')
+
 
 
                     <!-- Authentication Links -->
@@ -253,17 +307,16 @@
                             </div>
                         </li>
                     @endguest
+
+                    @yield('notification-bell')
                 </ul>
 
 
             </div>
         </div>
 
+
     </nav>
-
-
-
-
 
 
 

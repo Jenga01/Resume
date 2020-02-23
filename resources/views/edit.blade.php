@@ -223,14 +223,10 @@
                         </thead>
 
 
-
-
                         @foreach($education as $edu)
                             <tr class="item{{$edu->id}}">
                                 <td>{{$edu->studies_name}}</td>
                                 <td>{{$edu->institution}}</td>
-
-
 
                                 <td><button class="edit-modal-edu btn btn-info" data-id="{{$edu->id}}"
                                             data-sn="{{$edu->studies_name}}"
@@ -247,10 +243,7 @@
                                         <span class="glyphicon glyphicon-trash"></span> Delete
                                     </button>
 
-
                                     <a href="{{route('person.education.courses', ['id' => $edu->id])}}" class="btn btn-info btn-xs" role="button">Add courses</a>
-
-
 
                                 </td>
 
@@ -292,8 +285,6 @@
                             <th class="text-center">Actions</th>
                         </tr>
                         </thead>
-
-
 
 
                         @foreach($courses as $c)

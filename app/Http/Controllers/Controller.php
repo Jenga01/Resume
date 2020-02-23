@@ -30,11 +30,11 @@ class Controller extends BaseController
                 'actionText' => 'View My Site',
                 'actionURL' => url('/'),
                 'messege' => 'Visited you',
-                'user_id' => $person[0]->user_id
-            ];
-            $user_id = $person[0]->user_id;
 
-            Notification::send($person, new VisitsNotification($details, $user_id));
+            ];
+
+
+            Notification::send($person, new VisitsNotification($details));
 
         }else{
 
@@ -44,14 +44,14 @@ class Controller extends BaseController
                 'thanks' => 'Thank you for using Resumetec!',
                 'actionText' => 'View My Site',
                 'actionURL' => url('/'),
-                'messege' => 'you had a new visitor',
+                'messege' => 'had a visitor',
 
             ];
 
-                $user_id = $person[0]->user_id;
-                Notification::send($person, new VisitsNotification($details, $user_id));
 
-                //send($person, new VisitsNotification($details));
+                Notification::send($person, new VisitsNotification($details));
+
+
 
 
         }

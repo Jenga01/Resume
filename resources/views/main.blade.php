@@ -217,7 +217,7 @@
 
             .contact-info {
                 float: left;
-                margin-top: -200px;
+
             }
         }
 
@@ -255,7 +255,7 @@
 </head>
 <body>
 
-<div class="flex-center position-ref full-height">
+
 
 
     <div class="content">
@@ -319,11 +319,6 @@
                         </p>
 
 
-
-
-
-
-
                     </div>
                     </div>
                 </div>
@@ -356,12 +351,32 @@
 
             </div>
 
-
-
-
         @endforeach
-
         @endif
+
+        @if($projects->count() > 0)
+
+            <h1 class="display-1">Projects</h1>
+            <div class="divider div-transparent"></div>
+
+            <div class="container">
+                @foreach($projects as $project)
+
+                    <b style="font-size: x-large">Project name:</b>
+                    <p>{{$project->name}}</p>
+                    <b style="font-size: x-large">Description:</b>
+                    <p>{{$project->description}}</p>
+                    <p>
+                        <a href="{{$project->url}}"style="font-size: x-large" class="btn btn-link" target="_blank">Go to the project</a>
+                    </p>
+                    <hr class="dotted">
+
+
+                @endforeach
+            </div>
+                @endif
+
+
 
 
         @if($education->count() > 0)
@@ -371,7 +386,7 @@
         @foreach($education as $edu)
 
                 <div class="divider div-transparent"></div>
-            <div class="container" id="edu-container">
+                <div class="container">
 
                 <p><b>Program name: </b>{{$edu->studies_name}}</p>
                 <p><b>Educational institution: </b>{{$edu->institution}}</p>
@@ -400,16 +415,15 @@
                             </ul>
                         </ul>
                     @endif
+
                     @endforeach
 
 
-
-
-
-
         @endforeach
+                </div>
                 @endif
-            </div>
+
+
 
 
 
@@ -417,8 +431,11 @@
 
             <h1 class="display-1">Skills</h1>
             <div class="divider div-transparent"></div>
-            <div class="container" id="skills-container">
+
+            <div class="container">
+
                 <p class="col-sm-4" >
+
             @foreach($skills as $skill)
 
 
@@ -434,45 +451,23 @@
 
 
         @if($languages->count() > 0)
-
-            <h1 class="display-1">Languages</h1>
+                    <h1 class="display-1">Languages</h1>
             <div class="divider div-transparent"></div>
+            <div class="container">
             @foreach($languages as $language)
 
-                <div class="container">
+
                     <p class="col-sm-4" >
                     <ul class="list-unstyled">
                             <ul>
                                 <li>{{$language->language}}</li>
                             </ul>
                     </ul>
-                </div>
-
             @endforeach
-        @endif
-
-
-        @if($projects->count() > 0)
-
-            <h1 class="display-1">Projects</h1>
-            <div class="divider div-transparent"></div>
-            <div class="container">
-
-            @foreach($projects as $project)
-
-                        <b>Project name:</b>
-                        <p>{{$project->name}}</p>
-                    <b>Description:</b>
-                    <p>{{$project->description}}</p>
-                    <p>
-                        <a href="{{$project->url}}" class="btn btn-link" target="_blank">Go to the project</a>
-                    </p>
-                    <div class="divider div-transparent"></div>
-
-            @endforeach
-
-        @endif
             </div>
+        @endif
+
+
 
         <div class="h-divider">
             <div class="shadow"></div>
@@ -503,18 +498,11 @@
                 <p class="bg-light text-dark" style="font-size: large; margin-top: 20px;"><a href="http://resumetec.site/home" target="_blank">Interested in creating Resume like this?</a></p>
             </div>
 
-            @endif
+                    @endif
 
 
 
 
-
-
-
-
-
-    </div>
-</div>
 
 </body>
 
