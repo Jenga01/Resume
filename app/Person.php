@@ -18,7 +18,27 @@ class Person extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function experiences() {
-        return $this->hasMany(Experience::class);
+    public function experience() {
+        return $this->hasMany(Experience::class, 'person_id');
+    }
+
+    public function education() {
+        return $this->hasMany(Education::class, 'person_id');
+    }
+
+    public function courses() {
+        return $this->hasMany(Courses::class, 'person_id');
+    }
+
+    public function skills() {
+        return $this->hasMany(Skills::class, 'person_id');
+    }
+
+    public function languages() {
+        return $this->hasMany(Languages::class, 'person_id');
+    }
+
+    public function projects() {
+        return $this->hasMany(Project::class, 'person_id');
     }
 }

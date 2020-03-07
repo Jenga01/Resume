@@ -24,23 +24,22 @@ class showcvController extends Controller
 
     public  function show($id){
 
-        //$person = Person::where('id', '=', $id)->get();
         $person = Person::findOrFail($id);
         Session::put('resume_user_id', $id->user_id);
-        $experiences = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
-        $education = Education::where('person_id', 'LIKE', "%$id->id%")->get();
-        $courses = Courses::where('person_id', 'LIKE', "%$id->id%")->get();
 
-        $skills = Skills::where('person_id', 'LIKE', "%$id->id%")->get();
-        $languages = Languages::where('person_id', 'LIKE', "%$id->id%")->get();
-        $projects = Project::where('person_id', 'LIKE', "%$id->id%")->get();
+        $experiences= Person::find($id->id)->experience()->get();
+        $education = Person::find($id->id)->education()->get();
+        $courses = Person::find($id->id)->courses()->get();
+        $skills = Person::find($id->id)->skills()->get();
+        $languages = Person::find($id->id)->languages()->get();
+        $projects = Person::find($id->id)->projects()->get();
 
 
 
         $this->messege($person); //send notification
 
 
-        return view('main')->with(compact('person', 'experiences', 'education', 'courses', 'skills', 'languages', 'projects', 'visits'));
+        return view('main')->with(compact('person', 'experiences','education', 'courses', 'skills', 'languages', 'projects', 'visits'));
 
     }
 

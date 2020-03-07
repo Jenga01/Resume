@@ -84,7 +84,7 @@ class EducationController extends Controller
 
     public function delete(Request $request) {
        Education::find($request->id)->delete();
-        Courses::where('institution_id', 'LIKE', "%$request->id%")->delete();
+        Courses::where('institution_id', $request->id)->delete();
         return response ()->json([
             'status' => 'Education info has been successfully deleted',
         ]);

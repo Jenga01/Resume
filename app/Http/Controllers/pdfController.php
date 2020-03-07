@@ -25,14 +25,14 @@ class pdfController extends Controller
 
 
 
-        $person = Person::where('id', 'LIKE', "%$id->id%")->get();
-        $fileName = Person::where('id', 'LIKE', "%$id->id%")->pluck('name')->first();
-        $experience = Experience::where('person_id', 'LIKE', "%$id->id%")->get();
-        $education = Education::where('person_id', 'LIKE', "%$id->id%")->get();
-        $courses = Courses::where('person_id', 'LIKE', "%$id->id%")->get();
-        $skills = Skills::where('person_id', 'LIKE', "%$id->id%")->get();
-        $languages = Languages::where('person_id', 'LIKE', "%$id->id%")->get();
-        $projects = Project::where('person_id', 'LIKE', "%$id->id%")->get();
+        $person = Person::where('id', $id->id)->get();
+        $fileName = Person::where('id', $id->id)->pluck('name')->first();
+        $experience= Person::find($id->id)->experience()->get();
+        $education = Person::find($id->id)->education()->get();
+        $courses = Person::find($id->id)->courses()->get();
+        $skills = Person::find($id->id)->skills()->get();
+        $languages = Person::find($id->id)->languages()->get();
+        $projects = Person::find($id->id)->projects()->get();
 
         $pdf = PDF::loadView('pdf',compact('person', 'experience',  'education', 'courses', 'skills', 'languages', 'projects'));
         return $pdf->download($fileName .'_Resume.pdf');

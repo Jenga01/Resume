@@ -31,8 +31,6 @@ class CoursesController extends Controller
 
             $courses = new Courses();
             $courses->course_name = $request['courses'][$i];
-
-
             $courses->institution_id = Session::get('institutionID');
             $courses->person_id = Session::get('personID');
 
