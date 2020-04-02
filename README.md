@@ -1,4 +1,4 @@
-- http://resumetec.site/
+http://resumetec.site/
 
 # Resume
 - Create your resume 
