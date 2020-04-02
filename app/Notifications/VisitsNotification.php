@@ -25,7 +25,6 @@ class VisitsNotification extends Notification implements ShouldBroadcast
     protected $user_id;
 
 
-
     /**
      * Create a new notification instance.
      *
@@ -34,7 +33,7 @@ class VisitsNotification extends Notification implements ShouldBroadcast
     public function __construct($details)
     {
         $this->details = $details;
-       // $this->user_id = $user;
+
 
 
     }
@@ -42,18 +41,18 @@ class VisitsNotification extends Notification implements ShouldBroadcast
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['mail', 'database'];
     }
 
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
@@ -69,17 +68,13 @@ class VisitsNotification extends Notification implements ShouldBroadcast
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function toDatabase($notifiable)
     {
         return $this->details['messege'];
-
     }
-
-
-
 
 
 }

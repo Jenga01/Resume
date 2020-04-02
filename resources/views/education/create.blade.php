@@ -4,13 +4,13 @@
 
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 
 
 
 
     <div class="container">
-@yield('education')
+        @yield('education')
         <div class="row">
 
 
@@ -52,28 +52,26 @@
                             </div>
 
 
-                    </div> <!-- Location -->
-                    <div class="form-group">
-                        {!! Form::label('location', 'Location:', ['class' => 'col-lg-2 control-label']) !!}
-                        <div class="col-lg-10">
-                            {!! Form::text('location', $value = null, ['class' => 'form-control', 'placeholder' => 'Instituition location']) !!}
+                        </div> <!-- Location -->
+                        <div class="form-group">
+                            {!! Form::label('location', 'Location:', ['class' => 'col-lg-2 control-label']) !!}
+                            <div class="col-lg-10">
+                                {!! Form::text('location', $value = null, ['class' => 'form-control', 'placeholder' => 'Instituition location']) !!}
+                            </div>
                         </div>
-                    </div>
 
 
+                        <!-- Submit Button -->
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                {!! Form::submit('Submit', ['class' => 'btn btn-success'] ) !!}
 
-                    <!-- Submit Button -->
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
-                            {!! Form::submit('Submit', ['class' => 'btn btn-success'] ) !!}
-
-                            {{link_to('create-cv/skills', $title = 'Skills', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
-{{--                            {{link_to('create-cv/education', $title = 'Education', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}--}}
-
+                                {{link_to('create-cv/skills', $title = 'Skills', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
+                                {{--                            {{link_to('create-cv/education', $title = 'Education', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}--}}
 
 
+                            </div>
                         </div>
-                    </div>
 
                     </div>
 
@@ -81,8 +79,6 @@
 
                 {!! Form::close()  !!}
                 {{link_to('/home', $title = 'Dashboard', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: left;'], $secure = null)}}
-
-
 
 
             </div>

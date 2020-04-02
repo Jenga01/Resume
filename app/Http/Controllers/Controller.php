@@ -19,44 +19,5 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function messege($person){
 
-
-        if(Auth::check()){
-            $details = [
-                'greeting' =>'Hi, '. $person[0]->name,
-                'body' => Auth::user()->name .' checked your resume',
-                'thanks' => 'Thank you for using Resumetec!',
-                'actionText' => 'View My Site',
-                'actionURL' => url('/'),
-                'messege' => 'Visited you',
-
-            ];
-
-
-            Notification::send($person, new VisitsNotification($details));
-
-        }else{
-
-            $details = [
-                'greeting' =>'Hi, '. $person[0]->name,
-                'body' => 'Someone checked your resume',
-                'thanks' => 'Thank you for using Resumetec!',
-                'actionText' => 'View My Site',
-                'actionURL' => url('/'),
-                'messege' => 'had a visitor',
-
-            ];
-
-
-                Notification::send($person, new VisitsNotification($details));
-
-
-
-
-        }
-
-
-
-    }
 }

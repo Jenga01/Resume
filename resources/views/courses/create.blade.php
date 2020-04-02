@@ -19,9 +19,10 @@
 
                     <div class="form-group">
                         <div id="main">
-                            <input type="button" id="btAdd" value="Add Course" class="btn btn-primary" />
-                            <input type="button" id="btRemove" value="Remove Course" class="btn btn-danger" />
-                            <input type="button" id="btRemoveAll" value="Remove all courses" class="btn btn-danger" /><br />
+                            <input type="button" id="btAdd" value="Add Course" class="btn btn-primary"/>
+                            <input type="button" id="btRemove" value="Remove Course" class="btn btn-danger"/>
+                            <input type="button" id="btRemoveAll" value="Remove all courses"
+                                   class="btn btn-danger"/><br/>
                         </div>
                     </div>
 
@@ -38,8 +39,6 @@
                             {{link_to('create-cv/skills', $title = 'Skills', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
 
 
-
-
                         </div>
                     </div>
 
@@ -52,7 +51,6 @@
             </div>
 
             {{Session::put('institutionID',request()->id)}}
-
 
 
         </div>

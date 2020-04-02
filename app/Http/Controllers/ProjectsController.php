@@ -11,18 +11,18 @@ use Session;
 class ProjectsController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         if (Auth::guest()) {
             //is a guest so redirect
             return redirect('login');
-        }else
+        } else {
             return view('projects.create');
-
+        }
     }
 
     public function create(Request $request)
     {
-
         $this->validate($request, array(
             'name' => 'required',
             'description' => 'required',
@@ -41,34 +41,31 @@ class ProjectsController extends Controller
 
 
         if ($project->save()) {
-
             return redirect()->route('projects')->with('alert-success', 'Project added');
         }
-
-
     }
 
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $project = Project::find($request->id);
 
-        $project->name = $request -> name;
-        $project->description = $request -> description;
-        $project->url = $request ->url;
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->url = $request->url;
 
         $project->save();
-        return response ()->json([
+        return response()->json([
             'status' => 'Project has been edited',
         ]);
     }
 
 
-
-
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
         Project::find($request->id)->delete();
 
-        return response ()->json([
+        return response()->json([
             'status' => 'Project has been deleted',
         ]);
     }

@@ -14,22 +14,18 @@ class EducationController extends Controller
 {
     //
 
-    public function index(){
-
-
+    public function index()
+    {
         if (Auth::guest()) {
             //is a guest so redirect
             return redirect('login');
-        }else
+        } else {
             return view('education.create');
-
+        }
     }
 
     public function create(Request $request)
     {
-
-
-
         $this->validate($request, array(
             'studies_name' => 'required',
             'institution' => 'required',
@@ -40,33 +36,28 @@ class EducationController extends Controller
         ));
 
 
+        $education = new Education();
 
-            $education = new Education();
+        $education->studies_name = $request->studies_name;
+        $education->institution = $request->institution;
+        $education->period = $request->period;
+        $education->degree = $request->degree;
+        $education->location = $request->location;
+        $education->person_id = Session::get('personID');
 
-            $education->studies_name = $request->studies_name;
-            $education->institution = $request->institution;
-            $education->period = $request->period;
-            $education->degree = $request->degree;
-            $education->location = $request->location;
-            $education->person_id = Session::get('personID');
-
-            $education->save();
-
-
-            if ($education->save()) {
-
-                $id = $education->id;
-                Session::put('institutionID', $id);
-
-                return redirect()->route('courses')->with('alert-success', 'data about the education has been saved');
-            }
+        $education->save();
 
 
+        if ($education->save()) {
+            $id = $education->id;
+            Session::put('institutionID', $id);
 
-
+            return redirect()->route('courses')->with('alert-success', 'data about the education has been saved');
+        }
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $education = Education::find($request->id);
 
 
@@ -77,21 +68,19 @@ class EducationController extends Controller
         $education->location = $request->location;
 
         $education->save();
-        return response ()->json([
+        return response()->json([
             'status' => 'Education information successfully edited',
         ]);
     }
 
-    public function delete(Request $request) {
-       Education::find($request->id)->delete();
+    public function delete(Request $request)
+    {
+        Education::find($request->id)->delete();
         Courses::where('institution_id', $request->id)->delete();
-        return response ()->json([
+        return response()->json([
             'status' => 'Education info has been successfully deleted',
         ]);
     }
-
-
-
 
 
 }

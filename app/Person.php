@@ -14,31 +14,38 @@ class Person extends Model
     public $table = 'person';
 
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function experience() {
+    public function experience()
+    {
         return $this->hasMany(Experience::class, 'person_id');
     }
 
-    public function education() {
+    public function education()
+    {
         return $this->hasMany(Education::class, 'person_id');
     }
 
-    public function courses() {
+    public function courses()
+    {
         return $this->hasMany(Courses::class, 'person_id');
     }
 
-    public function skills() {
+    public function skills()
+    {
         return $this->hasMany(Skills::class, 'person_id');
     }
 
-    public function languages() {
+    public function languages()
+    {
         return $this->hasMany(Languages::class, 'person_id');
     }
 
-    public function projects() {
+    public function projects()
+    {
         return $this->hasMany(Project::class, 'person_id');
     }
 }

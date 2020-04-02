@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 
-
     <!-- Styles -->
     <style type="text/css" media="all">
-        * { font-family: DejaVu Sans, sans-serif; }
+        * {
+            font-family: DejaVu Sans, sans-serif;
+        }
 
         html, body {
             background-color: #fff;
@@ -28,6 +28,7 @@
             margin: 0;
 
         }
+
         img {
             border-radius: 50%;
             background-size: cover;
@@ -85,24 +86,28 @@
         }
 
 
-        .col-sm-8{
+        .col-sm-8 {
             float: left;
             max-width: 30%;
 
         }
-        .contact-info{
+
+        .contact-info {
             float: right;
         }
+
         .page-break {
             page-break-after: always;
         }
+
         hr.style-two {
             border: 0;
             height: 0;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
-        .badge-light{
+
+        .badge-light {
             font-size: small;
             display: inline-block;
         }
@@ -111,16 +116,14 @@
         .list-unstyled {
             text-align: center;
         }
+
         .list-unstyled > ul {
             display: inline-block;
         }
 
-        .btn.btn-link{
+        .btn.btn-link {
             margin-left: 300px;
         }
-
-
-
 
 
     </style>
@@ -129,51 +132,47 @@
 
 @foreach ($person as $p)
 
-<div class="flex-center position-ref full-height">
+    <div class="flex-center position-ref full-height">
 
 
-    <div class="content">
-        <div class="title m-b-md">
-           {{$p->title}}
-        </div>
+        <div class="content">
+            <div class="title m-b-md">
+                {{$p->title}}
+            </div>
 
 
-
-                <h1>{{$p->name}}</h1>
-
-
-        <img src="{{ asset('public/').$p->image}}">
+            <h1>{{$p->name}}</h1>
 
 
+            <img src="{{ asset('public/').$p->image}}">
 
 
             <div class="container">
-               <p><b>Email:</b> {{$p->email}}</p>
-               <p><b>Phone:</b> {{$p->phone }}</p>
-               <p><b>Birth date:</b> {{$p->birthday }}</p>
-               <p><b>Location:</b> {{$p->location }}</p>
-                </div>
+                <p><b>Email:</b> {{$p->email}}</p>
+                <p><b>Phone:</b> {{$p->phone }}</p>
+                <p><b>Birth date:</b> {{$p->birthday }}</p>
+                <p><b>Location:</b> {{$p->location }}</p>
+            </div>
 
 
+            @endforeach
 
-    @endforeach
+            @if($experience->count() > 0)
 
-    @if($experience->count() > 0)
+                <div class="divider div-transparent"></div>
 
-            <div class="divider div-transparent"></div>
-
-            <div class="page-break"></div>
-        <h4 class="display-4" >Work experience</h4>
+                <div class="page-break"></div>
+                <h4 class="display-4">Work experience</h4>
 
 
                 @foreach ($experience as $exp)
-                <p><b>Position: </b>{{ $exp->position }}</p>
-                 <p><b>Workplace: </b>{{$exp->workplace }}</p>
-                 <p><b>Period: </b>{{ $exp->period }}</p>
-                 <p><b>Responsibilities: </b>{{$exp->responsibilities }}</p>
-                 <p><b>Tools: </b>{{$exp->stack }}</p>
+                    <p><b>Position: </b>{{ $exp->position }}</p>
+                    <p><b>Workplace: </b>{{$exp->workplace }}</p>
+                    <p><b>Period: </b>{{ $exp->period }}</p>
+                    <p><b>Responsibilities: </b>{{$exp->responsibilities }}</p>
+                    <p><b>Tools: </b>{{$exp->stack }}</p>
 
-                <hr class="style-two">
+                    <hr class="style-two">
                 @endforeach
 
             @endif
@@ -183,7 +182,7 @@
             @if($education->count() > 0)
 
                 <div class="divider div-transparent"></div>
-                <h4 class="display-4" >Education</h4>
+                <h4 class="display-4">Education</h4>
 
                 @foreach ($education as $edu)
                     <p><b>Studies field: </b>{{$edu->studies_name }}</p>
@@ -200,19 +199,23 @@
                     <p><b>Period:</b>{{ $edu->period }}</p>
                     <p><b>Location: </b>{{$edu->location }}</p>
 
-                @if($courses->count() > 0)
+                    @if($courses->count() > 0)
 
-                    <b><p><ins>Courses</ins></p></b>
-                @endif
-                @foreach($courses as $c)
-                    @if($edu->id == $c->institution_id)
-
-                               <p>{{$c->course_name}}</p>
-
+                        <b>
+                            <p>
+                                <ins>Courses</ins>
+                            </p>
+                        </b>
                     @endif
-                @endforeach
+                    @foreach($courses as $c)
+                        @if($edu->id == $c->institution_id)
 
-                <hr class="style-two">
+                            <p>{{$c->course_name}}</p>
+
+                        @endif
+                    @endforeach
+
+                    <hr class="style-two">
                 @endforeach
 
 
@@ -220,64 +223,63 @@
 
 
 
-        @if($skills->count() > 0)
+            @if($skills->count() > 0)
 
-            <div class="divider div-transparent"></div>
-            <h4 class="display-4" >Skills</h4>
-            <div class="container">
+                <div class="divider div-transparent"></div>
+                <h4 class="display-4">Skills</h4>
+                <div class="container">
 
-            @foreach ($skills as $skill)
-                <p class="badge badge-pill badge-light">{{ $skill->skill }}</p>
+                    @foreach ($skills as $skill)
+                        <p class="badge badge-pill badge-light">{{ $skill->skill }}</p>
 
-            @endforeach
-            </div>
-            <hr class="style-two">
-        @endif
-
-
-
-        @if($languages->count() > 0)
-
-            <div class="divider div-transparent"></div>
-            <h4 class="display-4">Languages</h4>
-
-            @foreach ($languages as $lang)
-                <p>{{ $lang->language }}</p>
-
-            @endforeach
-            <hr class="style-two">
-        @endif
-
-
-        @if($projects->count() > 0)
-
-            <div class="divider div-transparent"></div>
-            <h4 class="display-4">Projects</h4>
-            <div class="container">
-
-            @foreach ($projects as $project)
-                <p><b>Project name:</b>
-                    {{$project->name}}
-                </p>
-                <p>
-                <p><b>Description:</b>  {{$project->description}}
-                </p>
-
-                <p>
-                    <a href="{{$project->url}}" class="btn btn-link">Go to the project</a>
-                </p>
+                    @endforeach
+                </div>
                 <hr class="style-two">
-            @endforeach
-            </div>
+            @endif
 
 
-        @endif
+
+            @if($languages->count() > 0)
+
+                <div class="divider div-transparent"></div>
+                <h4 class="display-4">Languages</h4>
+
+                @foreach ($languages as $lang)
+                    <p>{{ $lang->language }}</p>
+
+                @endforeach
+                <hr class="style-two">
+            @endif
+
+
+            @if($projects->count() > 0)
+
+                <div class="divider div-transparent"></div>
+                <h4 class="display-4">Projects</h4>
+                <div class="container">
+
+                    @foreach ($projects as $project)
+                        <p><b>Project name:</b>
+                            {{$project->name}}
+                        </p>
+                        <p>
+                        <p><b>Description:</b> {{$project->description}}
+                        </p>
+
+                        <p>
+                            <a href="{{$project->url}}" class="btn btn-link">Go to the project</a>
+                        </p>
+                        <hr class="style-two">
+                    @endforeach
+                </div>
+
+
+            @endif
+
+        </div>
+
 
     </div>
-
-
-
-</div>
 
 
 </body>

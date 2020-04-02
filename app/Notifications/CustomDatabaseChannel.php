@@ -22,8 +22,8 @@ class CustomDatabaseChannel extends DatabaseChannel
     /**
      * Get the data for the notification.
      *
-     * @param  mixed  $notifiable
-     * @param  \Illuminate\Notifications\Notification  $notification
+     * @param mixed $notifiable
+     * @param \Illuminate\Notifications\Notification $notification
      * @return array
      *
      * @throws \RuntimeException
@@ -45,34 +45,32 @@ class CustomDatabaseChannel extends DatabaseChannel
     /**
      * Build an array payload for the DatabaseNotification Model.
      *
-     * @param  mixed  $notifiable
-     * @param  \Illuminate\Notifications\Notification  $notification
+     * @param mixed $notifiable
+     * @param \Illuminate\Notifications\Notification $notification
      * @return array
      */
     protected function buildPayload($notifiable, Notification $notification)
     {
         date_default_timezone_set('Europe/Vilnius');
-        if (Auth::check()){
-        return [
-            'id' => $notification->id,
-            'type' => get_class($notification),
-            'data' => $this->getData($notifiable, $notification),
-            'read_at' => null,
-            'user_id'=> Auth::id(),
-            'resume_user_id'=> Session::get('resume_user_id'),
-        ];
-            }
-        else{
+        if (Auth::check()) {
             return [
                 'id' => $notification->id,
                 'type' => get_class($notification),
                 'data' => $this->getData($notifiable, $notification),
                 'read_at' => null,
-                'user_id'=> null,
-                'resume_user_id'=> Session::get('resume_user_id'),
-                'unauthorized'=> 1,
+                'user_id' => Auth::id(),
+                'resume_user_id' => Session::get('resume_user_id'),
             ];
-
+        } else {
+            return [
+                'id' => $notification->id,
+                'type' => get_class($notification),
+                'data' => $this->getData($notifiable, $notification),
+                'read_at' => null,
+                'user_id' => null,
+                'resume_user_id' => Session::get('resume_user_id'),
+                'unauthorized' => 1,
+            ];
         }
     }
 }

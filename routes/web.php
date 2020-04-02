@@ -12,16 +12,13 @@
 */
 
 
-
 Route::get('/', function () {
-    if(Auth::check()){
+    if (Auth::check()) {
         return Redirect::to('home');
-    }else
-    return view('auth.login');
+    } else {
+        return view('auth.login');
+    }
 });
-
-
-
 
 
 /*CREATE*/
@@ -44,7 +41,6 @@ Route::get('/create-cv/projects', 'ProjectsController@index');
 Route::post('/create-cv/projects', 'ProjectsController@create')->name('projects');
 
 
-
 /*EDIT*/
 Route::get('person/{person}/edit', 'PersonController@edit')->name('person.edit');
 
@@ -54,24 +50,22 @@ Route::post('resume/delete/', 'PersonController@delete')->name('person.delete');
 
 /*AJAX UPDATE/DELETE*/
 
-Route::patch('experience/edit/work', 'ExperienceController@update' )->name('edit.experience');
-Route::post('experience/delete', 'ExperienceController@delete' )->name('delete.experience');
+Route::patch('experience/edit/work', 'ExperienceController@update')->name('edit.experience');
+Route::post('experience/delete', 'ExperienceController@delete')->name('delete.experience');
 
-Route::patch('education/edit/edu', 'EducationController@update' )->name('edit.education');
-Route::post('education/delete', 'EducationController@delete' )->name('delete.education');
+Route::patch('education/edit/edu', 'EducationController@update')->name('edit.education');
+Route::post('education/delete', 'EducationController@delete')->name('delete.education');
 
-Route::patch('education/edit/course', 'CoursesController@update' )->name('update.course');
-Route::post('education/course/delete', 'CoursesController@delete' )->name('update.course');
+Route::patch('education/edit/course', 'CoursesController@update')->name('update.course');
+Route::post('education/course/delete', 'CoursesController@delete')->name('update.course');
 
-Route::patch('skill/edit', 'SkillsController@update' )->name('update.skill');
-Route::post('skill/delete', 'SkillsController@delete' )->name('delete.skill');
+Route::patch('skill/edit', 'SkillsController@update')->name('update.skill');
+Route::post('skill/delete', 'SkillsController@delete')->name('delete.skill');
 
-Route::post('language/delete', 'LanguagesController@delete' )->name('delete.language');
+Route::post('language/delete', 'LanguagesController@delete')->name('delete.language');
 
-Route::patch('project/edit', 'ProjectsController@update' )->name('update.project');
-Route::post('project/delete', 'ProjectsController@delete' )->name('delete.project');
-
-
+Route::patch('project/edit', 'ProjectsController@update')->name('update.project');
+Route::post('project/delete', 'ProjectsController@delete')->name('delete.project');
 
 
 /*Displaying*/
@@ -81,8 +75,6 @@ Route::get('/resume/{person}', 'showcvController@show')->name('show.cv');
 /*notifications*/
 
 Route::get('/home/notifications', 'notificationsController@notificationRead')->name('mark.notifications');
-
-
 
 
 /*PDF*/

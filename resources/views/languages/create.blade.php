@@ -20,8 +20,8 @@
                     <div class="form-group">
                         <select class="form-control" name="language" required="required">
                             @foreach($language as $lang)
-                            <option value="{{$lang->name}}">{{$lang->name}}</option>
-                                @endforeach
+                                <option value="{{$lang->name}}">{{$lang->name}}</option>
+                            @endforeach
                         </select>
 
                     </div>
@@ -33,7 +33,6 @@
 
 
                             {{link_to('create-cv/projects', $title = 'Projects', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
-
 
 
                         </div>

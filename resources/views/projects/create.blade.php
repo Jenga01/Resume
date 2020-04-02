@@ -17,31 +17,30 @@
                     <legend>Projects</legend>
 
 
-
-                        <!-- Project name -->
-                        <div class="form-group">
-                            {!! Form::label('name', 'Project name:', ['class' => 'col-lg-2 control-label']) !!}
-                            <div class="col-lg-10">
-                                {!! Form::text('name', $value = null, ['class' => 'form-control', 'placeholder' => 'Project name']) !!}
-                            </div>
+                    <!-- Project name -->
+                    <div class="form-group">
+                        {!! Form::label('name', 'Project name:', ['class' => 'col-lg-2 control-label']) !!}
+                        <div class="col-lg-10">
+                            {!! Form::text('name', $value = null, ['class' => 'form-control', 'placeholder' => 'Project name']) !!}
                         </div>
+                    </div>
 
 
-                        <!-- Description -->
-                        <div class="form-group">
-                            {!! Form::label('description', 'Description:', ['class' => 'col-lg-2 control-label']) !!}
-                            <div class="col-lg-10">
-                                {!! Form::textarea('description', $value = null, ['class' => 'form-control', 'placeholder' => 'Short project description']) !!}
-                            </div>
+                    <!-- Description -->
+                    <div class="form-group">
+                        {!! Form::label('description', 'Description:', ['class' => 'col-lg-2 control-label']) !!}
+                        <div class="col-lg-10">
+                            {!! Form::textarea('description', $value = null, ['class' => 'form-control', 'placeholder' => 'Short project description']) !!}
                         </div>
+                    </div>
 
-                        <!-- url -->
-                        <div class="form-group">
-                            {!! Form::label('url', 'Project url:', ['class' => 'col-lg-2 control-label']) !!}
-                            <div class="col-lg-10">
-                                {!! Form::text('url', $value = null, ['class' => 'form-control', 'placeholder' => 'link to project e.g. github']) !!}
-                            </div>
+                    <!-- url -->
+                    <div class="form-group">
+                        {!! Form::label('url', 'Project url:', ['class' => 'col-lg-2 control-label']) !!}
+                        <div class="col-lg-10">
+                            {!! Form::text('url', $value = null, ['class' => 'form-control', 'placeholder' => 'link to project e.g. github']) !!}
                         </div>
+                    </div>
 
                     <!-- Submit Button -->
                     <div class="form-group">
@@ -54,13 +53,13 @@
 
                 </fieldset>
 
-                    </div>
-
-                {!! Form::close()  !!}
-
             </div>
-        {{link_to('/home', $title = 'Dashboard', $attributes = ['class' => 'btn btn-primary','id' => 'edu'], $secure = null)}}
+
+            {!! Form::close()  !!}
+
         </div>
+        {{link_to('/home', $title = 'Dashboard', $attributes = ['class' => 'btn btn-primary','id' => 'edu'], $secure = null)}}
+    </div>
 
 
 

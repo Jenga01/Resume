@@ -6,7 +6,8 @@
 
 
     <li class="nav-item avatar dropdown">
-        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <span class="badge badge-danger ml-2">
         {{$notifications->count() + $nullUser->count()}}
             </span>
@@ -17,14 +18,14 @@
 
             <div class="col-md-12">
 
-            @foreach($notifications as $note)
+                @foreach($notifications as $note)
 
-                @if($note->avatar != null)
-                    <p><img src="{{$note->avatar}}" width="40px" style="border-radius: 50%;">
-                        @endif
-                        {{$note->name}} checked your {{$note->title}} resume at {{$note->updated_at}}</p>
+                    @if($note->avatar != null)
+                        <p><img src="{{$note->avatar}}" width="40px" style="border-radius: 50%;">
+                            @endif
+                            {{$note->name}} checked your {{$note->title}} resume at {{$note->updated_at}}</p>
 
-                @endforeach
+                        @endforeach
 
                         @if($nullUser->count() >0)
                             <div class="col-md-12">
@@ -33,18 +34,19 @@
                                     <div class="shadow"></div>
                                 </div>
                                 @endif
-                @foreach($nullUser as $us)
+                                @foreach($nullUser as $us)
 
-                    <p>{{$us->title}} resume {{str_replace('"', "", $us->data)}} at {{$us->updated_at}} </p>
+                                    <p>{{$us->title}} resume {{str_replace('"', "", $us->data)}}
+                                        at {{$us->updated_at}} </p>
 
-                @endforeach
-                </div>
+                                @endforeach
+                            </div>
 
-                    @if($notifications->count() + $nullUser->count() >0)
-          <p> <a href="{{route('mark.notifications')}}" id="read_notif">Mark as read</a></p>
-                @else
-                No new notifications
-                @endif
+                            @if($notifications->count() + $nullUser->count() >0)
+                                <p><a href="{{route('mark.notifications')}}" id="read_notif">Mark as read</a></p>
+                            @else
+                                No new notifications
+                            @endif
 
 
             </div>
@@ -70,7 +72,8 @@
 
                         <div class="container">
 
-                            <a href="{{url('/create-cv')}}" id="create-cv" class="btn btn-outline-success">Create resume</a>
+                            <a href="{{url('/create-cv')}}" id="create-cv" class="btn btn-outline-success">Create
+                                resume</a>
 
                         </div>
                     </div>
@@ -92,7 +95,7 @@
                                             <td>Title</td>
                                             <td>Name</td>
 
-                                            <td colspan = 3>Actions</td>
+                                            <td colspan=3>Actions</td>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -101,18 +104,21 @@
                                                 <td>{{$p->title}}</td>
                                                 <td>{{$p->name}}</td>
                                                 <td>
-                                                    <a href="{{ route('person.edit',$p)}}" id="edit-resume" class="btn btn-primary">Edit</a>
+                                                    <a href="{{ route('person.edit',$p)}}" id="edit-resume"
+                                                       class="btn btn-primary">Edit</a>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('show.cv',$p)}}" id="show-resume" class="btn btn-success" target="_blank">Show Resume</a>
+                                                    <a href="{{ route('show.cv',$p)}}" id="show-resume"
+                                                       class="btn btn-success" target="_blank">Show Resume</a>
                                                 </td>
 
                                                 <td>
 
-                                                        <button class="delete-modal-resume btn btn-danger" data-id="{{$p->id}}">
+                                                    <button class="delete-modal-resume btn btn-danger"
+                                                            data-id="{{$p->id}}">
 
-                                                            <span class="glyphicon glyphicon-trash"></span> Delete
-                                                        </button>
+                                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                                    </button>
 
                                                 </td>
 
@@ -124,14 +130,13 @@
                                     </table>
                                     @section('resume-delete')
 
-                                        @endsection()
-
+                                    @endsection()
 
 
                                 </div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

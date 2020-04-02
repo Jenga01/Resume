@@ -12,17 +12,18 @@ use Session;
 class LanguagesController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         if (Auth::guest()) {
             //is a guest so redirect
             return redirect('login');
-        }else
+        } else {
             return view('languages.create');
-
+        }
     }
 
-    public function languages(){
-
+    public function languages()
+    {
         $language = Languages_filled::all(['id', 'name']);
 
         return view('languages.create')->with(compact('language'));
@@ -30,7 +31,6 @@ class LanguagesController extends Controller
 
     public function create(Request $request)
     {
-
         $language = new Languages();
 
         $language->language = $request->language;
@@ -40,18 +40,16 @@ class LanguagesController extends Controller
 
 
         if ($language->save()) {
-
             return redirect()->route('languages')->with('alert-success', 'Language added');
         }
-
-
     }
 
 
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
         Languages::find($request->id)->delete();
 
-        return response ()->json([
+        return response()->json([
             'status' => 'Language has been deleted',
         ]);
     }

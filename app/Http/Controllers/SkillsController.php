@@ -15,14 +15,14 @@ class SkillsController extends Controller
         if (Auth::guest()) {
             //is a guest so redirect
             return redirect('login');
-        }else
+        } else {
             return view('skills.create');
+        }
     }
 
     public function create(Request $request)
     {
-
-        for ($i=0; $i < count($request['skills']); ++$i) {
+        for ($i = 0; $i < count($request['skills']); ++$i) {
             $skills = new Skills();
 
             $skills->skill = $request['skills'][$i];
@@ -33,28 +33,28 @@ class SkillsController extends Controller
 
 
         if ($skills->save()) {
-
             return redirect()->route('skills')->with('alert-success', 'data about the skills has been saved');
         }
-
-
     }
-    public function update(Request $request) {
+
+    public function update(Request $request)
+    {
         $skill = Skills::find($request->id);
 
-        $skill->skill = $request ->skill;
+        $skill->skill = $request->skill;
 
 
         $skill->save();
-        return response ()->json([
+        return response()->json([
             'status' => 'Skill has been successfully edited',
         ]);
     }
 
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
         Skills::find($request->id)->delete();
 
-        return response ()->json([
+        return response()->json([
             'status' => 'Skill has been deleted',
         ]);
     }

@@ -19,9 +19,10 @@
 
                     <div class="form-group">
                         <div id="main">
-                            <input type="button" id="btAddSkill" value="Add Skill" class="btn btn-primary" />
-                            <input type="button" id="btRemoveSkill" value="Remove Skill" class="btn btn-danger" />
-                            <input type="button" id="btRemoveAllSkill" value="Remove all Skills" class="btn btn-danger" /><br />
+                            <input type="button" id="btAddSkill" value="Add Skill" class="btn btn-primary"/>
+                            <input type="button" id="btRemoveSkill" value="Remove Skill" class="btn btn-danger"/>
+                            <input type="button" id="btRemoveAllSkill" value="Remove all Skills"
+                                   class="btn btn-danger"/><br/>
                         </div>
                     </div>
 
@@ -33,7 +34,6 @@
 
 
                             {{link_to('create-cv/languages', $title = 'Languages', $attributes = ['class' => 'btn btn-primary','id' => 'edu', 'style'=>'float: right;'], $secure = null)}}
-
 
 
                         </div>
