@@ -1,6 +1,6 @@
 http://resumetec.site
 
-# Resume
+# Resumetec
 - Create your resume 
 - Handle your resume's(add, edit, delete)
 - Save resume as PDF
