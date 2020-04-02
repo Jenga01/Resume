@@ -1,4 +1,6 @@
-# Resume
+http://resumetec.site
+
+# Resumetec
 - Create your resume 
 - Handle your resume's(add, edit, delete)
 - Save resume as PDF
@@ -6,4 +8,4 @@
 - Multiple resumes per user
 - Login through linkedin, github, google accounts or create local account.
 - Receive notifications on resume visits
-- http://resumetec.site/
+
